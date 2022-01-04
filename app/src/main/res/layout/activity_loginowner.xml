@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".loginowner"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/logoimg"
+            android:layout_width="235dp"
+            android:layout_height="151dp"
+            android:src="@drawable/car"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/car" />
+
+        <TextView
+            android:layout_width="353dp"
+            android:layout_height="121dp"
+            android:layout_marginTop="132dp"
+            android:fontFamily="@font/bungee"
+            android:text="Welcome Back"
+            android:textColor="@color/primary"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/signintext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign in To continue"
+        android:textSize="18sp"
+        android:fontFamily="@font/baloo_paaji"
+        android:textColor="@color/primary"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        >
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="Username">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:id="@+id/usernameloginowner"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:passwordToggleEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="Pasword">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:id="@+id/paswordloginowner"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/forgetdriver"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:text="Forget Password?"
+        android:textColor="@color/black"
+        android:fontFamily="@font/baloo_paaji"
+
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:fontFamily="@font/baloo_paaji"
+        android:textSize="20sp"
+        android:id="@+id/ownerloginbtn"
+        />
+    <Button
+        android:id="@+id/ownersignup"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:text="Not User? Signup"
+        android:textColor="@color/black"
+        android:layout_gravity="end"
+        android:fontFamily="@font/baloo_paaji"
+
+        />
+
+</LinearLayout>
