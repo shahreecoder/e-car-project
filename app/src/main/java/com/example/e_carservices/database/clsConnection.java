@@ -1,4 +1,4 @@
-package com.example.e_carservices;
+package com.example.e_carservices.database;
 
 public class clsConnection {
     String conn;
