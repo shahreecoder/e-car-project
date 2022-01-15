@@ -1,4 +1,4 @@
-package com.example.e_carservices;
+package com.example.e_carservices.owner;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +19,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.e_carservices.R;
+import com.example.e_carservices.database.clsConnection;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -65,7 +67,7 @@ private EditText username, password;
             @Override
             public void onClick(View view) {
 
-                Intent osignup=new Intent(loginowner.this,singupowner.class);
+                Intent osignup=new Intent(loginowner.this, singupowner.class);
                 startActivity(osignup);
                 finish();
 
