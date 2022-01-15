@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECarServices">
         <activity
-            android:name=".ownerdashboard"
+            android:name=".owner.ownerdashboard"
             android:exported="false" />
         <activity
-            android:name=".singupowner"
+            android:name=".owner.singupowner"
             android:exported="false" />
         <activity
-            android:name=".loginowner"
+            android:name=".owner.loginowner"
             android:exported="false" />
         <activity
             android:name=".homescreen"

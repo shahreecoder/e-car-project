@@ -1,4 +1,4 @@
-package com.example.e_carservices;
+package com.example.e_carservices.owner;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,23 +19,26 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.e_carservices.R;
+import com.example.e_carservices.database.clsConnection;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class loginowner extends AppCompatActivity {
-private Button ownersignup;
-private  Button loginbtn;
+    private Button ownersignup;
+    private Button loginbtn;
 
-private EditText username, password;
+    private EditText username, password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginowner);
-        ownersignup=(Button) findViewById(R.id.ownersignup);
-        username=findViewById(R.id.usernameloginowner);
-        password=findViewById(R.id.paswordloginowner);
-        loginbtn=findViewById(R.id.ownerloginbtn);
+        ownersignup = (Button) findViewById(R.id.ownersignup);
+        username = findViewById(R.id.usernameloginowner);
+        password = findViewById(R.id.paswordloginowner);
+        loginbtn = findViewById(R.id.ownerloginbtn);
 
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
@@ -43,29 +46,25 @@ private EditText username, password;
             public void onClick(View view) {
                 String uname;
                 Editable pwd;
-                uname=username.getText().toString();
-                pwd=password.getText();
-                if(uname.isEmpty() || pwd.toString().isEmpty()){
+                uname = username.getText().toString();
+                pwd = password.getText();
+                if (uname.isEmpty() || pwd.toString().isEmpty()) {
                     username.setError("User or pasword must be filled");
                     username.setText("");
                     password.setText("");
                     username.requestFocus();
 
                 }
-                login(uname,pwd.toString().trim());
+                login(uname, pwd.toString().trim());
             }
         });
-
-
-
-
 
 
         ownersignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent osignup=new Intent(loginowner.this,singupowner.class);
+                Intent osignup = new Intent(loginowner.this, singupowner.class);
                 startActivity(osignup);
                 finish();
 
@@ -74,24 +73,26 @@ private EditText username, password;
     }
 
     private void login(String name, String pwd) {
-        ProgressDialog progressDialog=new ProgressDialog(this);
+        ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Please Wait...");
         progressDialog.setMessage("Login....");
         progressDialog.show();
-        clsConnection con=new clsConnection();
+        clsConnection con = new clsConnection();
         con.getConn();
-        StringRequest request= new StringRequest(Request.Method.POST, con.getConn()+"owneruser.php?type=ownerlogin", new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, con.getConn() + "owneruser.php?type=ownerlogin", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 progressDialog.dismiss();
-                if(response.equals("1")){
-                    Toast.makeText(getBaseContext(),"Login Success",Toast.LENGTH_LONG).show();
-                    Intent dashboard=new Intent(loginowner.this, ownerdashboard.class);
+                if (response.equals("1")) {
+                    Toast.makeText(getBaseContext(), "Login Success", Toast.LENGTH_LONG).show();
+                    ownerSession ownerSession = new ownerSession(loginowner.this);
+                    ownerSession.createloginowner(name);
+                    Intent dashboard = new Intent(loginowner.this, ownerdashboard.class);
 
                     startActivity(dashboard);
                     finish();
-                }else{
-                    Toast.makeText(getBaseContext(),"Login Failed" ,Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getBaseContext(), "Login Failed", Toast.LENGTH_LONG).show();
                     username.setError("Please insert correct user name");
                     username.requestFocus();
 
@@ -105,26 +106,27 @@ private EditText username, password;
                 username.setError("Please insert correct user name");
                 username.setText("");
                 password.setText("");
-                Toast.makeText(getBaseContext(),error.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), error.toString(), Toast.LENGTH_LONG).show();
 
             }
-        }){
+        }) {
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params=new HashMap<String,String>();
+                Map<String, String> params = new HashMap<String, String>();
 
-                params.put("username",name);
-                params.put("password",pwd);
+                params.put("username", name);
+                params.put("password", pwd);
 
                 return params;
 
             }
         };
-        RequestQueue requestQueue= Volley.newRequestQueue(loginowner.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(loginowner.this);
         requestQueue.add(request);
-        };
-
-
-
     }
+
+    ;
+
+
+}

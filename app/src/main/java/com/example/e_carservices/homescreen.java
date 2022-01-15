@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.e_carservices.owner.loginowner;
+import com.example.e_carservices.owner.singupowner;
+
 public class homescreen extends AppCompatActivity {
     private Button btnowner, btncustmr;
     @Override
@@ -18,14 +21,14 @@ public class homescreen extends AppCompatActivity {
         btnowner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent owner=new Intent(homescreen.this,loginowner.class);
+                Intent owner=new Intent(homescreen.this, loginowner.class);
                 startActivity(owner);
             }
         });
         btncustmr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent owner=new Intent(homescreen.this,singupowner.class);
+                Intent owner=new Intent(homescreen.this, singupowner.class);
                 startActivity(owner);
 
             }
