@@ -19,15 +19,18 @@
             android:textAlignment="center"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.55"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:logo="@drawable/menulogo"
             app:title="Owner Dashboard"
+
             app:titleMarginStart="50dp"
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
             app:titleTextColor="@color/primary"
             tools:ignore="MissingConstraints"
-            android:layout_marginTop="10dp"/>
+
+
+            tools:layout_editor_absoluteY="0dp" />
 
         <TextView
             android:id="@+id/textView4"
@@ -70,6 +73,89 @@
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toBottomOf="@+id/toolbardashboard"
             app:srcCompat="@drawable/carservices" />
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginTop="23dp"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            android:visibility="gone">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:elevation="3dp"
+                android:id="@+id/Cardaddaddress">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageaddress"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="52dp"
+                        android:layout_marginEnd="54dp"
+                        app:srcCompat="@drawable/locationicon" />
+
+                    <TextView
+                        android:id="@+id/textViewaddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/imageaddress"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/baloo_paaji"
+                        android:text="Add Address"
+                        android:textColor="@color/primary"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:elevation="3dp"
+                android:id="@+id/cardaddworkshop">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageworkshop"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="52dp"
+                        android:layout_marginEnd="54dp"
+                        app:srcCompat="@drawable/carrepairicon" />
+
+                    <TextView
+                        android:id="@+id/textViewaddworkshop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/imageworkshop"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/baloo_paaji"
+                        android:text="Add Workshop"
+                        android:textColor="@color/primary"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -81,7 +167,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView">
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            android:visibility="gone">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -153,6 +240,7 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="170dp"
@@ -162,7 +250,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:id="@+id/linearlayout1"
+            android:visibility="gone">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -232,6 +322,21 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/logouticon"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbardashboard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.988"
+            app:layout_constraintStart_toStartOf="@+id/toolbardashboard"
+            app:layout_constraintTop_toTopOf="@+id/toolbardashboard"
+            app:layout_constraintVertical_bias="0.437"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

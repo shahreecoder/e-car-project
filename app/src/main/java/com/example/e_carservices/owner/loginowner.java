@@ -89,7 +89,8 @@ private EditText username, password;
                 if(response.equals("1")){
                     Toast.makeText(getBaseContext(),"Login Success",Toast.LENGTH_LONG).show();
                     Intent dashboard=new Intent(loginowner.this, ownerdashboard.class);
-
+                    ownerSession ownerSession=new ownerSession(getBaseContext());
+                    ownerSession.createloginowner(name);
                     startActivity(dashboard);
                     finish();
                 }else{
