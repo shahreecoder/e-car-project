@@ -4,10 +4,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -61,14 +63,42 @@ public class ownerdashboard extends AppCompatActivity {
         btnlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ownerSession.Logoutowner();
-                Intent login=new Intent(ownerdashboard.this, loginowner.class);
-                startActivity(login);
-                finish();
+                Dialog dialog =new Dialog(ownerdashboard.this);
+                dialog.setTitle("Hello");
+                dialog.setContentView(R.layout.custome_exit_dialog);
+
+                final Button btnyess=dialog.findViewById(R.id.btnyess);
+                final Button btnno=dialog.findViewById(R.id.btnno);
+                btnyess.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        ownerSession.Logoutowner();
+                        dialog.dismiss();
+                    Intent login=new Intent(ownerdashboard.this, loginowner.class);
+                    startActivity(login);
+                    finish();
+                    }
+                });
+                btnno.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+//                if(checkexit()){
+//                    ownerSession.Logoutowner();
+//                    Intent login=new Intent(ownerdashboard.this, loginowner.class);
+//                    startActivity(login);
+//                    finish();
+//                }
+
             }
         });
 
     }
+
 
     private void checkaddress(String name) {
         ProgressDialog progressDialog = new ProgressDialog(this);
