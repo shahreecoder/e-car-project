@@ -60,6 +60,14 @@ public class ownerdashboard extends AppCompatActivity {
 
             }
         });
+
+        cardaddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent address=new Intent(ownerdashboard.this,owneraddress.class);
+                startActivity(address);
+            }
+        });
         btnlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
