@@ -86,11 +86,12 @@ private EditText username, password;
             @Override
             public void onResponse(String response) {
                 progressDialog.dismiss();
-                if(response.equals("1")){
+                int check=Integer.parseInt(response);
+                if(check>0){
                     Toast.makeText(getBaseContext(),"Login Success",Toast.LENGTH_LONG).show();
                     Intent dashboard=new Intent(loginowner.this, ownerdashboard.class);
                     ownerSession ownerSession=new ownerSession(getBaseContext());
-                    ownerSession.createloginowner(name);
+                    ownerSession.createloginowner(name,response);
                     startActivity(dashboard);
                     finish();
                 }else{

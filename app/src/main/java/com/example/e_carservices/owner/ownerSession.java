@@ -20,9 +20,10 @@ public class ownerSession {
         editor = owner.edit();
     }
 
-    public void createloginowner(String username) {
+    public void createloginowner(String username, String id) {
         editor.putBoolean(IS_LOGIN, true);
         editor.putString(KEY_USERNAME, username);
+        editor.putString(KEY_USERID,id);
         editor.commit();
     }
     public void createloginid(String  id){

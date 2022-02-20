@@ -57,7 +57,6 @@ public class ownerdashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(ownerdashboard.this, "Card is Clicked", Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -66,6 +65,7 @@ public class ownerdashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent address=new Intent(ownerdashboard.this,owneraddress.class);
                 startActivity(address);
+                //finish();
             }
         });
         btnlogout.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +119,7 @@ public class ownerdashboard extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
              progressDialog.dismiss();
-             Toast.makeText(getBaseContext(),response,Toast.LENGTH_LONG).show();
+             //Toast.makeText(getBaseContext(),response,Toast.LENGTH_LONG).show();
              try {
                  JSONObject jsonObject=new JSONObject(response);
                  String checkaddress=jsonObject.getString("data");
@@ -168,5 +168,12 @@ public class ownerdashboard extends AppCompatActivity {
         requestQueue.add(request);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ownerSession ownerSession = new ownerSession(this);
 
+        ownername.setText(ownerSession.ownername());
+        checkaddress(ownerSession.ownername());
+    }
 }
