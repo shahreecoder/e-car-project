@@ -59,6 +59,13 @@ public class ownerdashboard extends AppCompatActivity {
                 Toast.makeText(ownerdashboard.this, "Card is Clicked", Toast.LENGTH_SHORT).show();
             }
         });
+        cardshop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addshop=new Intent(ownerdashboard.this, ownerworkshop.class);
+                startActivity(addshop);
+            }
+        });
 
         cardaddress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +111,8 @@ public class ownerdashboard extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 
