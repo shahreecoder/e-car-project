@@ -56,7 +56,8 @@ public class ownerdashboard extends AppCompatActivity {
         crdaddservices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ownerdashboard.this, "Card is Clicked", Toast.LENGTH_SHORT).show();
+                Intent addservice=new Intent(ownerdashboard.this,addservices.class);
+                startActivity(addservice);
             }
         });
         cardshop.setOnClickListener(new View.OnClickListener() {

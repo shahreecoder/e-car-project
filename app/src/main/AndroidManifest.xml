@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECarServices">
         <activity
+            android:name=".owner.addservices"
+            android:exported="false" />
+        <activity
             android:name=".owner.ownerworkshop"
             android:exported="false" />
         <activity
