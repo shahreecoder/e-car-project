@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ownerdashboard extends AppCompatActivity {
-    CardView crdaddservices, cardaddress, cardshop;
+    CardView crdaddservices, cardaddress, cardshop , cardmanagerservice;
     TextView ownername;
     LinearLayout l1,l2,l3;
     Button btnlogout;
@@ -44,6 +44,7 @@ public class ownerdashboard extends AppCompatActivity {
         crdaddservices = findViewById(R.id.Cardaddservices);
         cardaddress=findViewById(R.id.Cardaddaddress);
         cardshop=findViewById(R.id.cardaddworkshop);
+        cardmanagerservice=findViewById(R.id.crdmanageservice);
         ownername = findViewById(R.id.userownername);
         btnlogout=findViewById(R.id.logout);
         l1=findViewById(R.id.linearLayout);
@@ -67,7 +68,13 @@ public class ownerdashboard extends AppCompatActivity {
                 startActivity(addshop);
             }
         });
-
+        cardmanagerservice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent managerservice=new Intent(ownerdashboard.this, manageservices.class);
+                startActivity(managerservice);
+            }
+        });
         cardaddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,6 +119,8 @@ public class ownerdashboard extends AppCompatActivity {
 
             }
         });
+
+
 
 
 
