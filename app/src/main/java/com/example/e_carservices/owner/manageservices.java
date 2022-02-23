@@ -73,7 +73,7 @@ public class manageservices extends AppCompatActivity {
                             String sdisp=jsonArray.getJSONObject(i).getString("Sdisp");
                             String simg=jsonArray.getJSONObject(i).getString("Simage");
 
-                            modelservice =new modelservice(String.valueOf(i+1),sname,"j","j","j");
+                            modelservice =new modelservice(String.valueOf(i+1),sname,"j","j",simg);
                             modelserviceArrayList.add(modelservice);
                             serviceadaptor.notifyDataSetChanged();
 

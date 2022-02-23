@@ -40,6 +40,7 @@
     <ListView
         android:id="@+id/servicelist"
         android:layout_width="407dp"
+        android:padding="10dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
