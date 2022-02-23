@@ -25,7 +25,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:logo="@drawable/menulogo"
-            app:title="Owner Dashboard"
+            app:title="Service Master"
 
             app:titleMarginStart="50dp"
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
