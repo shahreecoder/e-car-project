@@ -36,7 +36,7 @@ public class serviceadaptor extends ArrayAdapter<modelservice> {
         TextView tvname=view.findViewById(R.id.txt_servicename);
         ImageView imgservice=view.findViewById(R.id.imageviewservice);
         Picasso.get().load("https://ecar.shahreecoder.com/api/uploads/"+arraylistservice.get(position).getSimage().toString()).into(imgservice);
-        tvid.setText(arraylistservice.get(position).getSid());
+        tvid.setText(arraylistservice.get(position).getIndex());
         tvname.setText(arraylistservice.get(position).getSname());
         return view;
     }

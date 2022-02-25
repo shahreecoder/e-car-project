@@ -1,17 +1,20 @@
 package com.example.e_carservices.owner;
 
 public class modelservice {
-    String sid, sname, sprice, sdisp, simage;
+    String sid, sname, sprice, sdisp, simage,index;
 
     public modelservice() {
     }
 
-    public modelservice(String sid, String sname, String sprice, String sdisp, String simage) {
+
+
+    public modelservice(String sid, String sname, String sprice, String sdisp, String simage, String index) {
         this.sid = sid;
         this.sname = sname;
         this.sprice = sprice;
         this.sdisp = sdisp;
         this.simage = simage;
+        this.index=index;
     }
 
     public String getSid() {
@@ -52,5 +55,12 @@ public class modelservice {
 
     public void setSimage(String simage) {
         this.simage = simage;
+    }
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
     }
 }

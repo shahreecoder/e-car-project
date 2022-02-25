@@ -32,13 +32,14 @@
       />
 
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageviewservice"
         android:layout_width="60dp"
         android:layout_height="46dp"
         android:layout_marginEnd="4dp"
         android:gravity="center_vertical|center"
-        android:src="@drawable/uploadimageicon" />
+        android:src="@drawable/uploadimageicon"
+        app:shapeAppearanceOverlay="@style/circularimg"/>
 
 
 </LinearLayout>

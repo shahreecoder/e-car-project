@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -60,7 +61,14 @@ public class manageservices extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         switch (i) {
                             case 0: {
-                                Toast.makeText(manageservices.this, modelserviceArrayList.get(index).getSid(), Toast.LENGTH_LONG).show();
+                                //Toast.makeText(manageservices.this, modelserviceArrayList.get(index).getSid(), Toast.LENGTH_LONG).show();
+                                Intent servicedetails=new Intent(manageservices.this,servicedetails.class);
+                                servicedetails.putExtra("Sid",modelserviceArrayList.get(index).getSid());
+                                servicedetails.putExtra("Sname",modelserviceArrayList.get(index).getSname());
+                                servicedetails.putExtra("Sprice",modelserviceArrayList.get(index).getSprice());
+                                servicedetails.putExtra("Sdisp",modelserviceArrayList.get(index).getSdisp());
+                                servicedetails.putExtra("Simage",modelserviceArrayList.get(index).getSimage());
+                                startActivity(servicedetails);
                                 break;
                             }
                         }
@@ -103,7 +111,7 @@ public class manageservices extends AppCompatActivity {
                         String simg = jsonArray.getJSONObject(i).getString("Simage");
 
                         //modelservice = new modelservice(String.valueOf(i + 1), sname, "j", "j", simg);
-                        modelservice = new modelservice(sid, sname, sprice, sdisp, simg);
+                        modelservice = new modelservice(sid, sname, sprice, sdisp, simg,String.valueOf(i+1));
                         modelserviceArrayList.add(modelservice);
                         serviceadaptor.notifyDataSetChanged();
 
