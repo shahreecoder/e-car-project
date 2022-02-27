@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -34,9 +35,12 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,66 +50,94 @@ public class addservices extends AppCompatActivity {
     ImageView Simage;
     Bitmap bitmap;
     String encodedimage;
+    TextView tvmain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addservices);
-        btnaddservice=findViewById(R.id.btnaddservice);
-        Sname=findViewById(R.id.ServiceName);
-        Sprice=findViewById(R.id.ServicePrice);
-        Sdisp=findViewById(R.id.ServiceDisp);
-        Simage=findViewById(R.id.adserviceimage);
-        ownerSession ownerSession=new ownerSession(this);
+        btnaddservice = findViewById(R.id.btnaddservice);
+        Sname = findViewById(R.id.ServiceName);
+        Sprice = findViewById(R.id.ServicePrice);
+        Sdisp = findViewById(R.id.ServiceDisp);
+        Simage = findViewById(R.id.adserviceimage);
+        tvmain=findViewById(R.id.textView4);
+        ownerSession ownerSession = new ownerSession(this);
+        if (getIntent().getStringExtra("Sname") != null) {
+            btnaddservice.setText("Update");
+            tvmain.setText("update your Service");
+            Sname.setText(getIntent().getStringExtra("Sname"));
+            Sprice.setText(getIntent().getStringExtra("Sprice"));
+            Sdisp.setText(getIntent().getStringExtra("Sdisp"));
+            String imgurl = getIntent().getStringExtra("Simage");
 
+            //Picasso.get().load("https://ecar.shahreecoder.com/api/uploads/" + imgurl).into(Simage);
 
-        Simage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Dexter.withActivity(addservices.this)
-                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                        .withListener(new PermissionListener() {
-                            @Override
-                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                                Intent intent=new Intent(Intent.ACTION_PICK);
-                                intent.setType("image/*");
-                                startActivityForResult(Intent.createChooser(intent,"Select Service Image"),1);
-                            }
+            Simage.setVisibility(View.GONE);
+            btnaddservice.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (getIntent().getStringExtra("Sid") ==null ) {
+                        Toast.makeText(addservices.this, "Please Provide Require information", Toast.LENGTH_LONG).show();
+                    } else {
+                        //Toast.makeText(addservices.this,Sname.getText().toString()+ Sdisp.getText().toString()+Sprice.getText().toString()+ ownerSession.owenid(), Toast.LENGTH_LONG).show();
+                        if(encodedimage==""){
+                            updateservice(Sname.getText().toString(), Sdisp.getText().toString(), Sprice.getText().toString(), getIntent().getStringExtra("Simage"),getIntent().getStringExtra("Sid") );
+                        }else{
+                            updateservice(Sname.getText().toString(), Sdisp.getText().toString(), Sprice.getText().toString(), encodedimage,getIntent().getStringExtra("Sid") );
+                        }
 
-                            @Override
-                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-
-                            }
-
-                            @Override
-                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-                                permissionToken.continuePermissionRequest();
-                            }
-                        }).check();
-            }
-        });
-        btnaddservice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(encodedimage==null||Sname.getText().toString().isEmpty() || Sprice.getText().toString().isEmpty()||Sdisp.getText().toString().isEmpty()){
-                    Toast.makeText(addservices.this,"Please Provide Require information", Toast.LENGTH_LONG).show();
-                }else{
-                    //Toast.makeText(addservices.this,Sname.getText().toString()+ Sdisp.getText().toString()+Sprice.getText().toString()+ ownerSession.owenid(), Toast.LENGTH_LONG).show();
-                    insertservice(Sname.getText().toString(),Sdisp.getText().toString(),Sprice.getText().toString(),encodedimage, ownerSession.owenid());
+                    }
                 }
-            }
-        });
+            });
+        }else{
+            Simage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Dexter.withActivity(addservices.this)
+                            .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                            .withListener(new PermissionListener() {
+                                @Override
+                                public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                                    Intent intent = new Intent(Intent.ACTION_PICK);
+                                    intent.setType("image/*");
+                                    startActivityForResult(Intent.createChooser(intent, "Select Service Image"), 1);
+                                }
 
+                                @Override
+                                public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+
+                                }
+
+                                @Override
+                                public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                                    permissionToken.continuePermissionRequest();
+                                }
+                            }).check();
+                }
+            });
+            btnaddservice.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (encodedimage == null || Sname.getText().toString().isEmpty() || Sprice.getText().toString().isEmpty() || Sdisp.getText().toString().isEmpty()) {
+                        Toast.makeText(addservices.this, "Please Provide Require information", Toast.LENGTH_LONG).show();
+                    } else {
+                        //Toast.makeText(addservices.this,Sname.getText().toString()+ Sdisp.getText().toString()+Sprice.getText().toString()+ ownerSession.owenid(), Toast.LENGTH_LONG).show();
+                        insertservice(Sname.getText().toString(), Sdisp.getText().toString(), Sprice.getText().toString(), encodedimage, ownerSession.owenid());
+                    }
+                }
+            });
+        }
 
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode==1 && data!=null && resultCode==RESULT_OK){
-            Uri filepath=data.getData();
+        if (requestCode == 1 && data != null && resultCode == RESULT_OK) {
+            Uri filepath = data.getData();
             try {
-                InputStream inputStream= getContentResolver().openInputStream(filepath);
-                bitmap= BitmapFactory.decodeStream(inputStream);
+                InputStream inputStream = getContentResolver().openInputStream(filepath);
+                bitmap = BitmapFactory.decodeStream(inputStream);
                 Simage.setImageBitmap(bitmap);
                 storeimage(bitmap);
 
@@ -115,14 +147,15 @@ public class addservices extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-    public void storeimage(Bitmap bitmap){
-        ByteArrayOutputStream stream=new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
-        byte [] imageBytes=stream.toByteArray();
-        encodedimage=android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
+
+    public void storeimage(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] imageBytes = stream.toByteArray();
+        encodedimage = android.util.Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
 
-    public void insertservice(String sn, String disp, String price, String image, String ownerid){
+    public void insertservice(String sn, String disp, String price, String image, String ownerid) {
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Please Wait...");
         progressDialog.setMessage("Service is adding");
@@ -174,4 +207,52 @@ public class addservices extends AppCompatActivity {
         requestQueue.add(request);
 
     }
+    public void updateservice(String sn, String disp, String price, String image, String Sid) {
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Please Wait...");
+        progressDialog.setMessage("Service is Updating");
+        progressDialog.show();
+        clsConnection con = new clsConnection();
+        con.getConn();
+        StringRequest request = new StringRequest(Request.Method.POST, con.getConn() + "updateownerservice.php", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+
+                if (response.equals("updated")) {
+                    Toast.makeText(getBaseContext(), "Service has been updated", Toast.LENGTH_LONG).show();
+                    //Start manage service activity
+                    progressDialog.dismiss();
+                    finish();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+
+            }
+        }) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("sname", sn);
+                params.put("sdisp", disp);
+                params.put("sprice", price);
+                params.put("Sid", Sid);
+
+
+                return params;
+
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(addservices.this);
+        requestQueue.add(request);
+
+    }
+
 }

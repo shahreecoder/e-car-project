@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ public class manageservices extends AppCompatActivity {
     ListView listView;
     serviceadaptor serviceadaptor;
     modelservice modelservice;
+    ImageButton btnaddservicefloat;
     public static ArrayList<modelservice> modelserviceArrayList = new ArrayList<>();
 
     @Override
@@ -42,6 +44,8 @@ public class manageservices extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manageservices);
         listView = findViewById(R.id.servicelist);
+        btnaddservicefloat=findViewById(R.id.btnaddservicefloat);
+
         serviceadaptor = new serviceadaptor(manageservices.this, modelserviceArrayList);
         listView.setAdapter(serviceadaptor);
         ownerSession ownerSession = new ownerSession(this);
@@ -71,11 +75,34 @@ public class manageservices extends AppCompatActivity {
                                 startActivity(servicedetails);
                                 break;
                             }
+                            case 1:{
+                                Intent updateservice=new Intent(manageservices.this,addservices.class);
+                                updateservice.putExtra("Sid",modelserviceArrayList.get(index).getSid());
+                                updateservice.putExtra("Sname",modelserviceArrayList.get(index).getSname());
+                                updateservice.putExtra("Sprice",modelserviceArrayList.get(index).getSprice());
+                                updateservice.putExtra("Sdisp",modelserviceArrayList.get(index).getSdisp());
+                                updateservice.putExtra("Simage",modelserviceArrayList.get(index).getSimage());
+                                startActivity(updateservice);
+                                break;
+                            }
+                            case 2:{
+
+                                deleteownerservice(modelserviceArrayList.get(index).getSid());
+                                servicedata(ownerSession.owenid());
+                            }
                         }
 
                     }
                 });
                 bilder.create().show();
+            }
+        });
+
+        btnaddservicefloat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addservice=new Intent(manageservices.this,addservices.class);
+                startActivity(addservice);
             }
         });
 
@@ -144,5 +171,45 @@ public class manageservices extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(manageservices.this);
         requestQueue.add(request);
+    }
+   public void  deleteownerservice( String Sid){
+       ownerSession ownerSession = new ownerSession(this);
+
+       clsConnection con=new clsConnection();
+       con.getConn();
+       StringRequest request=new StringRequest(Request.Method.POST, con.getConn() + "deleteservice.php", new Response.Listener<String>() {
+           @Override
+           public void onResponse(String response) {
+               if(response.equals("deleted")){
+                   Toast.makeText(getBaseContext(),"Service has been Deleted",Toast.LENGTH_LONG).show();
+               }
+               //addressid=response;
+
+           }
+       }, new Response.ErrorListener() {
+           @Override
+           public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getBaseContext(),error.toString(),Toast.LENGTH_LONG).show();
+           }
+       }){
+           @Nullable
+           @Override
+           protected Map<String, String> getParams() throws AuthFailureError {
+               Map<String,String> params=new HashMap<String,String>();
+               params.put("Sid",Sid);
+               return params;
+
+           }
+       };
+       RequestQueue requestQueue= Volley.newRequestQueue(manageservices.this);
+       requestQueue.add(request);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ownerSession ownerSession = new ownerSession(this);
+        servicedata(ownerSession.owenid());
     }
 }

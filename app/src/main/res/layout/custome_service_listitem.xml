@@ -10,36 +10,37 @@
 
     <TextView
         android:id="@+id/txt_id"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="4dp"
         android:background="@drawable/circle"
         android:gravity="center_vertical|center"
         android:text="1"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
        />
 
     <TextView
         android:id="@+id/txt_servicename"
-        android:layout_width="260dp"
+        android:layout_width="300dp"
         android:layout_height="41dp"
         android:gravity="center_vertical"
         android:paddingLeft="20dp"
         android:text="Service name"
         android:textColor="@color/primary"
-        android:textSize="20sp"
+        android:textSize="18sp"
       />
 
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:layout_marginTop="7dp"
         android:id="@+id/imageviewservice"
-        android:layout_width="60dp"
-        android:layout_height="46dp"
+        android:layout_width="40dp"
+        android:layout_height="26dp"
         android:layout_marginEnd="4dp"
         android:gravity="center_vertical|center"
-        android:src="@drawable/uploadimageicon"
-        app:shapeAppearanceOverlay="@style/circularimg"/>
+        android:src="@drawable/viewitem"
+        app:shapeAppearanceOverlay="@style/circularimg" />
 
 
 </LinearLayout>
