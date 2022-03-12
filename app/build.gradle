@@ -39,4 +39,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.karumi:dexter:6.2.3'
     implementation 'com.squareup.picasso:picasso:2.71828'
+//    for bottom navigation
+    implementation 'com.etebarian:meow-bottom-navigation:1.2.0'
+//    For image slider
+    implementation 'com.github.smarteist:autoimageslider:1.4.0'
+
 }

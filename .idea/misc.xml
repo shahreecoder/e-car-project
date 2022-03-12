@@ -11,6 +11,7 @@
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_logindriver.xml" value="0.2" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_loginowner.xml" value="0.2" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_mainhomecustomer.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_manageservices.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_owneraddress.xml" value="0.22" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_ownerdashboard.xml" value="0.1" />
@@ -21,6 +22,7 @@
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_singupowner.xml" value="0.2" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/custome_exit_dialog.xml" value="0.25" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/custome_service_listitem.xml" value="0.18" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/sliderimageitem.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/xml/customeexitdialog.xml" value="0.2" />
       </map>
     </option>
