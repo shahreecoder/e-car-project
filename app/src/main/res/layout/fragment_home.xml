@@ -50,9 +50,10 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
+        android:scrollbars="none"
         android:layout_height="match_parent"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="55dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -212,7 +213,8 @@
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
                     android:foregroundGravity="center"
-                    android:overScrollMode="never" />
+                    android:overScrollMode="never"
+                    />
 
 
             </LinearLayout>
