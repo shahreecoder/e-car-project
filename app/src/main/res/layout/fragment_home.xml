@@ -207,13 +207,18 @@
                     android:textColor="#FF5722"
                     android:textSize="18sp" />
 
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/homeviewpager"
+<!--                <androidx.viewpager.widget.ViewPager-->
+<!--                    android:id="@+id/homeviewpager"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:clipToPadding="false"-->
+<!--                    android:foregroundGravity="center"-->
+<!--                    android:overScrollMode="never"-->
+<!--                    />-->
+                <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:clipToPadding="false"
-                    android:foregroundGravity="center"
-                    android:overScrollMode="never"
+                    android:id="@+id/topdealRV"
                     />
 
 

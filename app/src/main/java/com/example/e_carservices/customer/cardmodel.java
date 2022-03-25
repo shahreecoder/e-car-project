@@ -2,9 +2,9 @@ package com.example.e_carservices.customer;
 
 public class cardmodel {
     String title, price;
-    int image;
+    String image;
 
-    public cardmodel(String title, String price, int image) {
+    public cardmodel(String title, String price, String image) {
         this.title = title;
         this.price = price;
         this.image = image;
@@ -26,11 +26,11 @@ public class cardmodel {
         this.price = price;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }
