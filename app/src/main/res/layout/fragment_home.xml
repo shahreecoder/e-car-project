@@ -4,16 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customer.HomeFragment"
-    >
+    tools:context=".customer.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:id="@+id/addresstextlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="0dp"
 
 
         android:orientation="horizontal"
@@ -50,10 +49,10 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:scrollbars="none"
         android:layout_height="match_parent"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="55dp"
+        android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,14 +111,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardservice"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:elevation="3dp"
-                    app:cardCornerRadius="12dp"
-
-                    >
+                    app:cardCornerRadius="12dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -130,11 +128,11 @@
 
                         <ImageView
                             android:id="@+id/imageView"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentEnd="true"
-                            app:srcCompat="@drawable/additem" />
+                            app:srcCompat="@drawable/ic_servicesicon" />
 
                         <TextView
                             android:id="@+id/textView"
@@ -142,16 +140,16 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginStart="10dp"
-                            android:fontFamily="@font/baloo_paaji"
+                            android:fontFamily="@font/lato_bold"
                             android:text="Service"
                             android:textAlignment="center"
                             android:textColor="#FF5722"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/Cardaddservices"
+                    android:id="@+id/CardCalculater"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -167,11 +165,11 @@
 
                         <ImageView
                             android:id="@+id/Workshop"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentEnd="true"
-                            app:srcCompat="@drawable/additem" />
+                            app:srcCompat="@drawable/ic_calculatericon" />
 
                         <TextView
                             android:id="@+id/textView2"
@@ -180,10 +178,10 @@
                             android:layout_below="@id/imageView"
                             android:layout_centerHorizontal="true"
                             android:layout_marginStart="15dp"
-                            android:fontFamily="@font/baloo_paaji"
-                            android:text="cars"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="Calculater"
                             android:textColor="#FF5722"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -207,19 +205,18 @@
                     android:textColor="#FF5722"
                     android:textSize="18sp" />
 
-<!--                <androidx.viewpager.widget.ViewPager-->
-<!--                    android:id="@+id/homeviewpager"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:clipToPadding="false"-->
-<!--                    android:foregroundGravity="center"-->
-<!--                    android:overScrollMode="never"-->
-<!--                    />-->
+                <!--                <androidx.viewpager.widget.ViewPager-->
+                <!--                    android:id="@+id/homeviewpager"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="match_parent"-->
+                <!--                    android:clipToPadding="false"-->
+                <!--                    android:foregroundGravity="center"-->
+                <!--                    android:overScrollMode="never"-->
+                <!--                    />-->
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:id="@+id/topdealRV"
-                    />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
 
             </LinearLayout>

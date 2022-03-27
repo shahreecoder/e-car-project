@@ -1,9 +1,11 @@
 package com.example.e_carservices.customer;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,6 +48,7 @@ public class HomeFragment extends Fragment {
     View view;
     List<Integer> images = new ArrayList<>();
     RecyclerView recyclerView;
+    CardView CardService, CardCalculater;
     private ArrayList<cardmodel> cardmodelArrayList;
     private MycardAdapter mycardAdapter;
 
@@ -62,18 +65,43 @@ public class HomeFragment extends Fragment {
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
-
+//For Slider
         images.add(R.drawable.oneslid);
         images.add(R.drawable.twoslid);
-
+        images.add(R.drawable.threeslid);
+//        For binding
         SliderView sliderView = view.findViewById(R.id.imageSlider);
+        CardService=view.findViewById(R.id.cardservice);
+        CardCalculater=view.findViewById(R.id.CardCalculater);
         recyclerView=view.findViewById(R.id.topdealRV);
+
+
+
+//        For Slider Set Adapter
         sliderAdapter sliderAdapter = new sliderAdapter(images);
         sliderView.setSliderAdapter(sliderAdapter);
         sliderView.setAutoCycle(true);
         sliderView.startAutoCycle();
         loadcard();
 
+
+//onClick for card Service
+        CardService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(),Servicehome.class);
+                startActivity(intent);
+            }
+        });
+
+
+//on Click for calculate card
+        CardCalculater.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Work in progress", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 //        sliderView.setSliderTransformAnimation(SliderAnimations.ZOOMOUTTRANSFORMATION);
 
@@ -109,7 +137,7 @@ public class HomeFragment extends Fragment {
 
                         //modelservice = new modelservice(String.valueOf(i + 1), sname, "j", "j", simg);
 
-                        cardmodelArrayList.add(new cardmodel(stitle,sprice,simg));
+                        cardmodelArrayList.add(new cardmodel(stitle,sprice,simg,sid,sdisp));
 
                     }
 
@@ -121,6 +149,7 @@ public class HomeFragment extends Fragment {
                     recyclerView.setItemAnimator(new DefaultItemAnimator());
                     mycardAdapter=new MycardAdapter(cardmodelArrayList,getContext());
                     recyclerView.setAdapter(mycardAdapter);
+
 
                     //Toast.makeText(getBaseContext(),"test",Toast.LENGTH_LONG).show();
 

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/btnbg.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/circle.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/logouticon.xml" value="0.10989583333333333" />
@@ -16,16 +17,22 @@
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_owneraddress.xml" value="0.22" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_ownerdashboard.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_ownerworkshop.xml" value="0.22" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_product_details.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_servicedetails.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_servicehome.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_signupdriver.xml" value="0.2" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_signupowner.xml" value="0.1859375" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_singupowner.xml" value="0.2" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/card_item.xml" value="0.10382513661202186" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/custome_exit_dialog.xml" value="0.25" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/custome_service_listitem.xml" value="0.18" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/deal_list_item.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/fragment_account.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/fragment_deals.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/fragment_product_details.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/singledatagrid.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/sliderimageitem.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/xml/customeexitdialog.xml" value="0.2" />
       </map>

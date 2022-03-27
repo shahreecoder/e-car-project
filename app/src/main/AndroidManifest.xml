@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECarServices">
         <activity
+            android:name=".customer.Servicehome"
+            android:exported="false" />
+        <activity
             android:name=".customer.mainhomecustomer"
             android:exported="false" />
         <activity

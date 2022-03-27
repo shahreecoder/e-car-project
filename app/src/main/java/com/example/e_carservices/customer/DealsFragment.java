@@ -3,13 +3,17 @@ package com.example.e_carservices.customer;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -21,6 +25,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.e_carservices.R;
 import com.example.e_carservices.database.clsConnection;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,13 +56,16 @@ public class DealsFragment extends Fragment {
 
         view= inflater.inflate(R.layout.fragment_deals, container, false);
         topdeallv=view.findViewById(R.id.topdeallist);
-        loaddeals();
 
+        loaddeals();
 
 
         return view;
 
     }
+
+
+
 
     private void loaddeals() {
         dealmodelArrayList =new ArrayList<>();
@@ -109,11 +118,20 @@ public class DealsFragment extends Fragment {
 
                         //modelservice = new modelservice(String.valueOf(i + 1), sname, "j", "j", simg);
 
-                        dealmodelArrayList.add(new cardmodel(stitle,sprice,simg));
+                        dealmodelArrayList.add(new cardmodel(stitle,sprice,simg,sid,sdisp));
 
                     }
                     dealAdapter= new TopDealAdapter(getActivity().getBaseContext(), dealmodelArrayList);
                     topdeallv.setAdapter(dealAdapter);
+                    topdeallv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Toast.makeText(getContext(), dealmodelArrayList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+//                            loadproductdetail(dealmodelArrayList.get(position).getTitle(),dealmodelArrayList.get(position).getPrice(),
+//                                    dealmodelArrayList.get(position).getImage(),dealmodelArrayList.get(position).getDisp(),
+//                                    dealmodelArrayList.get(position).getId(),);
+                        }
+                    });
                     // mycardAdapter.notifyDataSetChanged();
                     //mycardAdapter =new
 

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bottom_sheet_background"
+    android:id="@+id/bottomsheetlayout">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FF5722"
+        android:text="Product Details"
+        android:textAlignment="center"
+        android:fontFamily="@font/lato_bold"
+        android:padding="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/oneslid"
+        android:scaleType="centerCrop"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:id="@+id/productimaged"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FF5722"
+        android:text="Product Name"
+        android:fontFamily="@font/lato_bold"
+        android:padding="20dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:id="@+id/productnamed"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary"
+        android:text="Product Discription"
+        android:fontFamily="@font/lato_bold"
+        android:padding="20dp"
+        android:textSize="15sp"
+        android:maxLines="2"
+        android:minLines="1"
+        android:id="@+id/productdispd"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary"
+        android:text="Price goes here"
+        android:fontFamily="@font/lato_bold"
+        android:padding="20dp"
+        android:textSize="15sp"
+
+        android:id="@+id/productpriced"
+        />
+    <Button
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:text="Add to Cart"
+        android:backgroundTint="#FF5722"
+        android:background="@drawable/btnbg"
+        android:fontFamily="@font/lato_bold"
+        android:layout_marginBottom="30dp"
+        />
+
+</LinearLayout>
