@@ -57,7 +57,10 @@ public class DealsFragment extends Fragment {
         view= inflater.inflate(R.layout.fragment_deals, container, false);
         topdeallv=view.findViewById(R.id.topdeallist);
 
+
         loaddeals();
+
+
 
 
         return view;
@@ -123,15 +126,7 @@ public class DealsFragment extends Fragment {
                     }
                     dealAdapter= new TopDealAdapter(getActivity().getBaseContext(), dealmodelArrayList);
                     topdeallv.setAdapter(dealAdapter);
-                    topdeallv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            Toast.makeText(getContext(), dealmodelArrayList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
-//                            loadproductdetail(dealmodelArrayList.get(position).getTitle(),dealmodelArrayList.get(position).getPrice(),
-//                                    dealmodelArrayList.get(position).getImage(),dealmodelArrayList.get(position).getDisp(),
-//                                    dealmodelArrayList.get(position).getId(),);
-                        }
-                    });
+
                     // mycardAdapter.notifyDataSetChanged();
                     //mycardAdapter =new
 

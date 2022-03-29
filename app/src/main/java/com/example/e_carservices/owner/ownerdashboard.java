@@ -32,9 +32,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ownerdashboard extends AppCompatActivity {
-    CardView crdaddservices, cardaddress, cardshop , cardmanagerservice;
+    CardView crdaddservices, cardaddress, cardshop, cardmanagerservice;
     TextView ownername;
-    LinearLayout l1,l2,l3;
+    LinearLayout l1, l2, l3;
     Button btnlogout;
 
     @Override
@@ -42,14 +42,14 @@ public class ownerdashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ownerdashboard);
         crdaddservices = findViewById(R.id.Cardaddservices);
-        cardaddress=findViewById(R.id.Cardaddaddress);
-        cardshop=findViewById(R.id.cardaddworkshop);
-        cardmanagerservice=findViewById(R.id.crdmanageservice);
+        cardaddress = findViewById(R.id.Cardaddaddress);
+        cardshop = findViewById(R.id.cardaddworkshop);
+        cardmanagerservice = findViewById(R.id.crdmanageservice);
         ownername = findViewById(R.id.userownername);
-        btnlogout=findViewById(R.id.logout);
-        l1=findViewById(R.id.linearLayout);
-        l2=findViewById(R.id.linearlayout1);
-        l3=findViewById(R.id.linearLayout2);
+        btnlogout = findViewById(R.id.logout);
+        l1 = findViewById(R.id.linearLayout);
+        l2 = findViewById(R.id.linearlayout1);
+        l3 = findViewById(R.id.linearLayout2);
         ownerSession ownerSession = new ownerSession(this);
 
         ownername.setText(ownerSession.ownername());
@@ -57,28 +57,28 @@ public class ownerdashboard extends AppCompatActivity {
         crdaddservices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent addservice=new Intent(ownerdashboard.this,addservices.class);
+                Intent addservice = new Intent(ownerdashboard.this, addservices.class);
                 startActivity(addservice);
             }
         });
         cardshop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent addshop=new Intent(ownerdashboard.this, ownerworkshop.class);
+                Intent addshop = new Intent(ownerdashboard.this, ownerworkshop.class);
                 startActivity(addshop);
             }
         });
         cardmanagerservice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent managerservice=new Intent(ownerdashboard.this, manageservices.class);
+                Intent managerservice = new Intent(ownerdashboard.this, manageservices.class);
                 startActivity(managerservice);
             }
         });
         cardaddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent address=new Intent(ownerdashboard.this,owneraddress.class);
+                Intent address = new Intent(ownerdashboard.this, owneraddress.class);
                 startActivity(address);
                 //finish();
             }
@@ -86,21 +86,21 @@ public class ownerdashboard extends AppCompatActivity {
         btnlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Dialog dialog =new Dialog(ownerdashboard.this);
+                Dialog dialog = new Dialog(ownerdashboard.this);
                 dialog.setTitle("Hello");
                 dialog.setContentView(R.layout.custome_exit_dialog);
 
-                final Button btnyess=dialog.findViewById(R.id.btnyess);
-                final Button btnno=dialog.findViewById(R.id.btnno);
+                final Button btnyess = dialog.findViewById(R.id.btnyess);
+                final Button btnno = dialog.findViewById(R.id.btnno);
                 btnyess.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
                         ownerSession.Logoutowner();
                         dialog.dismiss();
-                    Intent login=new Intent(ownerdashboard.this, loginowner.class);
-                    startActivity(login);
-                    finish();
+                        Intent login = new Intent(ownerdashboard.this, loginowner.class);
+                        startActivity(login);
+                        finish();
                     }
                 });
                 btnno.setOnClickListener(new View.OnClickListener() {
@@ -121,9 +121,6 @@ public class ownerdashboard extends AppCompatActivity {
         });
 
 
-
-
-
     }
 
 
@@ -137,39 +134,39 @@ public class ownerdashboard extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, con.getConn() + "ownercheckshopandaddress.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-             progressDialog.dismiss();
-             //Toast.makeText(getBaseContext(),response,Toast.LENGTH_LONG).show();
-             try {
-                 JSONObject jsonObject=new JSONObject(response);
-                 String checkaddress=jsonObject.getString("data");
-                 String checkshop=jsonObject.getString("shop");
-                 if(checkaddress.equals("addressok")&&checkshop.equals("shopok")){
-                     l1.setVisibility(View.VISIBLE);
-                     l2.setVisibility(View.VISIBLE);
-                 }else if(checkaddress.equals("addressfaild")&&checkshop.equals("shopfailed")){
-                     l3.setVisibility(View.VISIBLE);
-                     cardaddress.setVisibility(View.VISIBLE);
-                     cardshop.setVisibility(View.VISIBLE);
-                 }else if(checkaddress.equals("addressok")){
-                     l3.setVisibility(View.VISIBLE);
-                     cardaddress.setVisibility(View.INVISIBLE);
-                     cardshop.setVisibility(View.VISIBLE);
-                 }else if(checkshop.equals("shopok")){
-                     l3.setVisibility(View.VISIBLE);
-                     cardaddress.setVisibility(View.VISIBLE);
-                     cardshop.setVisibility(View.INVISIBLE);
-                 }
+                progressDialog.dismiss();
+                //Toast.makeText(getBaseContext(),response,Toast.LENGTH_LONG).show();
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String checkaddress = jsonObject.getString("data");
+                    String checkshop = jsonObject.getString("shop");
+                    if (checkaddress.equals("addressok") && checkshop.equals("shopok")) {
+                        l1.setVisibility(View.VISIBLE);
+                        l2.setVisibility(View.VISIBLE);
+                    } else if (checkaddress.equals("addressfaild") && checkshop.equals("shopfailed")) {
+                        l3.setVisibility(View.VISIBLE);
+                        cardaddress.setVisibility(View.VISIBLE);
+                        cardshop.setVisibility(View.VISIBLE);
+                    } else if (checkaddress.equals("addressok")) {
+                        l3.setVisibility(View.VISIBLE);
+                        cardaddress.setVisibility(View.INVISIBLE);
+                        cardshop.setVisibility(View.VISIBLE);
+                    } else if (checkshop.equals("shopok")) {
+                        l3.setVisibility(View.VISIBLE);
+                        cardaddress.setVisibility(View.VISIBLE);
+                        cardshop.setVisibility(View.INVISIBLE);
+                    }
 
-                // Toast.makeText(getBaseContext(),checkaddress+checkshop,Toast.LENGTH_LONG).show();
-             }catch (JSONException e){
-                 e.printStackTrace();
-             }
+                    // Toast.makeText(getBaseContext(),checkaddress+checkshop,Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-               progressDialog.dismiss();
+                progressDialog.dismiss();
                 Toast.makeText(getBaseContext(), error.toString(), Toast.LENGTH_LONG).show();
             }
         }) {

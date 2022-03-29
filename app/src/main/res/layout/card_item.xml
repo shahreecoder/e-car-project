@@ -49,6 +49,7 @@
                 android:background="@drawable/btnbg"
                 android:padding="0dp"
                 android:text="Add to Cart"
+                android:id="@+id/addtocarthomecard"
                 android:backgroundTint="#FF5722"
                 android:textColor="@color/white"
                 android:fontFamily="@font/lato_bold"
