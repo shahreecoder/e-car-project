@@ -8,13 +8,13 @@
       android:strokeLineJoin="miter"
       android:strokeWidth="1.9"
       android:fillColor="#00000000"
-      android:strokeColor="@color/white"
+      android:strokeColor="@color/master"
       android:strokeLineCap="square"/>
   <path
       android:pathData="M8,7a4,4 0,1 1,8 0"
       android:strokeLineJoin="miter"
       android:strokeWidth="1.9"
       android:fillColor="#00000000"
-      android:strokeColor="@color/white"
+      android:strokeColor="@color/master"
       android:strokeLineCap="square"/>
 </vector>

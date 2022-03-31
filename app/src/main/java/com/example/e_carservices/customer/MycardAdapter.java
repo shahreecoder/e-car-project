@@ -89,12 +89,13 @@ public class MycardAdapter extends RecyclerView.Adapter<MycardAdapter.ViewHolder
                     public void onClick(View view) {
 
                     addtocart addtocart=new addtocart(context);
-                        Toast.makeText(context, addtocart.checkalready("1",cardmodelArrayList.get(position).getId()).toString(), Toast.LENGTH_SHORT).show();
-//                    if(addtocart.checkalready("1",cardmodelArrayList.get(position).getId())){
-//                        addtocart.insertAddtocart("1",cardmodelArrayList.get(position).getId());
-//                    }else{
-//                        Toast.makeText(context, "Alread Add to the Cart", Toast.LENGTH_SHORT).show();
-//                    }
+                        //Toast.makeText(context, addtocart.checkalready("1",cardmodelArrayList.get(position).getId()).toString(), Toast.LENGTH_SHORT).show();
+                    if(addtocart.checkalready("1",cardmodelArrayList.get(position).getId())){
+                        addtocart.insertAddtocart("1",cardmodelArrayList.get(position).getId());
+                        holder.btncart.setText("Added ");
+                    }else{
+                        Toast.makeText(context, "Alread Add to the Cart", Toast.LENGTH_SHORT).show();
+                    }
 
 
 

@@ -26,17 +26,6 @@ public class mainhomecustomer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainhomecustomer);
         bottomNavigation = findViewById(R.id.bottomNavigation);
-//        SliderView sliderView = findViewById(R.id.imageSlider);
-
-
-
-
-
-//        sliderView.setSliderAdapter(sliderAdapter);
-//        sliderView.setAutoCycle(true);
-//        sliderView.startAutoCycle();
-        
-//        sliderView.setSliderTransformAnimation(SliderAnimations.ZOOMOUTTRANSFORMATION);
 
 
         bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.ic_baseline_home_24));
@@ -44,7 +33,12 @@ public class mainhomecustomer extends AppCompatActivity {
         bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.ic_baseline_person_24));
         bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.ic_baseline_shopping_cart_24));
         bottomNavigation.show(1, true);
-        replace(new HomeFragment());
+        if(getIntent().getStringExtra("page")=="cart"){
+            replace(new CartFragment());
+        }else {
+            replace(new HomeFragment());
+        }
+
         bottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
             @Override
             public Unit invoke(MeowBottomNavigation.Model model) {
@@ -73,7 +67,7 @@ public class mainhomecustomer extends AppCompatActivity {
 
 
     }
-    private void replace(Fragment fragment) {
+    public void replace(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame,fragment);
         transaction.commit();

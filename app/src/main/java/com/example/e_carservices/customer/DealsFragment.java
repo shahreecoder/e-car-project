@@ -1,16 +1,21 @@
 package com.example.e_carservices.customer;
 
+import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,6 +29,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.e_carservices.R;
+import com.example.e_carservices.database.addtocart;
 import com.example.e_carservices.database.clsConnection;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.squareup.picasso.Picasso;
@@ -43,6 +49,7 @@ public class DealsFragment extends Fragment {
     private  TopDealAdapter dealAdapter;
     private ListView topdeallv;
 
+
     public DealsFragment() {
         // Required empty public constructor
     }
@@ -50,6 +57,7 @@ public class DealsFragment extends Fragment {
 
 
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,7 +66,37 @@ public class DealsFragment extends Fragment {
         topdeallv=view.findViewById(R.id.topdeallist);
 
 
-        loaddeals();
+        Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.custome_exit_dialog);
+
+        final Button btnyess = dialog.findViewById(R.id.btnyess);
+        final Button btnno = dialog.findViewById(R.id.btnno);
+        final TextView titletxt=dialog.findViewById(R.id.txtexit);
+        titletxt.setText("Please Login to Continue");
+        btnyess.setText("Login");
+        btnno.setText("Cancel");
+        btnyess.setBackgroundColor(R.color.master);
+
+        btnyess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                loaddeals();
+
+
+
+                dialog.dismiss();
+
+            }
+        });
+        btnno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+
 
 
 

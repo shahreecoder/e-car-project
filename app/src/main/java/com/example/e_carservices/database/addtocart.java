@@ -56,6 +56,11 @@ public class addtocart extends SQLiteOpenHelper {
             return true;
         }
     }
+    public Boolean removeitem(String customerid, String product_id){
+        SQLiteDatabase db= this.getWritableDatabase();
+        db.delete("tblcart","product_id=? and customer_id=?",new String[]{product_id,customerid});
+        return true;
+    }
     public Boolean checkalready(String customer_id, String product_id){
         SQLiteDatabase db= this.getReadableDatabase();
 
@@ -76,7 +81,7 @@ public class addtocart extends SQLiteOpenHelper {
         }
         cursor.close();
 
-        if(Integer.parseInt(temp)>1){
+        if(Integer.parseInt(temp)>0){
             return false;
         }else{
             return true;
@@ -84,5 +89,6 @@ public class addtocart extends SQLiteOpenHelper {
 
 
     }
+
 
 }

@@ -51,53 +51,33 @@ public class TopDealAdapter extends ArrayAdapter<cardmodel> {
         Picasso.get().load("https://ecar.shahreecoder.com/api/uploads/" + image).into(imageIv);
         titleTv.setText(title);
         priceTV.setText("Price is: " + price + " /PKR");
-        //container.addView(view,position);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "Working on it", Toast.LENGTH_SHORT).show();
+        addtocart addtocart=new addtocart(context);
+        if(!addtocart.checkalready("1",model.getId())){
 
-            }
-        });
+            btnaddtocart.setText("Alread in Cart ");
+        }
+        //container.addView(view,position);
+//        view.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(context, "Working on it", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
         btnaddtocart.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
-//                Dialog dialog = new Dialog(context);
-//                dialog.setContentView(R.layout.custome_exit_dialog);
-//
-//                final Button btnyess = dialog.findViewById(R.id.btnyess);
-//                final Button btnno = dialog.findViewById(R.id.btnno);
-//                final TextView titletxt=dialog.findViewById(R.id.txtexit);
-//                titletxt.setText("Please Login to Continue");
-//                btnyess.setText("Login");
-//                btnno.setText("Cancel");
-//                btnyess.setBackgroundColor(R.color.master);
-//                btnyess.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-                        addtocart addtocart=new addtocart(context);
-                        addtocart.insertAddtocart("1",arraylistservice.get(position).getId());
-                    Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
-//
-//                        dialog.dismiss();
-//
-//                    }
-//                });
-//                btnno.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//                dialog.show();
-//                if(checkexit()){
-//                    ownerSession.Logoutowner();
-//                    Intent login=new Intent(ownerdashboard.this, loginowner.class);
-//                    startActivity(login);
-//                    finish();
-//                }
 
+
+                addtocart addtocart=new addtocart(context);
+                //Toast.makeText(context, addtocart.checkalready("1",cardmodelArrayList.get(position).getId()).toString(), Toast.LENGTH_SHORT).show();
+                if(addtocart.checkalready("1",model.getId())){
+                    addtocart.insertAddtocart("1",model.getId());
+                    btnaddtocart.setText("Added ");
+                }else{
+                    Toast.makeText(context, "Alread Add to the Cart", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return view;

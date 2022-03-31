@@ -6,9 +6,13 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -46,8 +50,36 @@ public class Servicehome extends AppCompatActivity {
 
         cardmodelArrayList = new ArrayList<>();
 
-        getData();
 
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.custome_exit_dialog);
+
+        final Button btnyess = dialog.findViewById(R.id.btnyess);
+        final Button btnno = dialog.findViewById(R.id.btnno);
+        final TextView titletxt=dialog.findViewById(R.id.txtexit);
+        titletxt.setText("Please Login To Continue");
+        btnyess.setText("Login");
+        btnno.setText("Cancel");
+
+
+        btnyess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dialog.dismiss();
+                getData();
+
+            }
+        });
+        btnno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
 
 
     }

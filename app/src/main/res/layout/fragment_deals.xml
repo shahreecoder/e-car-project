@@ -7,15 +7,27 @@
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Top Deals"
-        android:textColor="#FF5722"
-        android:textSize="20sp"
-        android:fontFamily="@font/bungee"
-        android:textAlignment="center"
-        />
+        android:orientation="horizontal"
+        android:background="@color/master">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Top Deals"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:paddingStart="20dp"
+            android:fontFamily="@font/bungee"
+
+
+            />
+        
+
+
+
+    </LinearLayout>
     <ListView
         android:id="@+id/topdeallist"
         android:layout_width="match_parent"

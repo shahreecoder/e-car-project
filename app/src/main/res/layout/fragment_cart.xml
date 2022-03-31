@@ -1,15 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customer.CartFragment">
+    tools:context=".customer.CartFragment"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/master">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Cart"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:paddingStart="20dp"
+            android:fontFamily="@font/bungee"
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_bin"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitEnd"
+            android:paddingEnd="20dp"
+            android:backgroundTint="@color/white"
+
+            android:id="@+id/emptycart"
+
+            />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        android:id="@+id/testcart"/>
+        android:orientation="vertical"
 
-</FrameLayout>
+        >
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/cartlist"
+            tools:listitem="@layout/cartlistitem"
+            android:layout_marginBottom="200dp"/>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="-200dp"
+        android:layout_marginBottom="0dp"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Price:-"
+            android:textColor="#FF5722"
+            android:textSize="20sp"
+            android:fontFamily="@font/lato_bold"
+            android:padding="20dp"
+            android:textStyle="bold"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0 /PKR"
+            android:textColor="#FF5722"
+            android:textSize="20sp"
+            android:fontFamily="@font/lato_bold"
+            android:padding="20dp"
+            android:textAlignment="textEnd"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/totalprice"
+
+
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="-140dp"
+        android:layout_marginBottom="50dp"
+        android:padding="20dp"
+        >
+        <Button
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="0dp"
+            android:text="Place Order"
+            android:drawable="@drawable/masterbg"
+            android:background="@drawable/masterbg"
+            android:fontFamily="@font/lato_bold"
+            android:id="@+id/placeorder"
+
+
+            />
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
