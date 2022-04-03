@@ -41,7 +41,8 @@
             android:text="Home Address Goes here   "
             android:textAlignment="center"
             android:textColor="#FF5722"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:id="@+id/homefaddress"/>
 
 
     </LinearLayout>

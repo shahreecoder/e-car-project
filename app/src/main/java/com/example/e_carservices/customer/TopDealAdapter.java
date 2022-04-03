@@ -52,7 +52,8 @@ public class TopDealAdapter extends ArrayAdapter<cardmodel> {
         titleTv.setText(title);
         priceTV.setText("Price is: " + price + " /PKR");
         addtocart addtocart=new addtocart(context);
-        if(!addtocart.checkalready("1",model.getId())){
+        CustomerSession customerSession=new CustomerSession(context);
+        if(!addtocart.checkalready(customerSession.customerid(),model.getId())){
 
             btnaddtocart.setText("Alread in Cart ");
         }
@@ -70,10 +71,11 @@ public class TopDealAdapter extends ArrayAdapter<cardmodel> {
             public void onClick(View v) {
 
 
+                CustomerSession customersession=new CustomerSession(context);
                 addtocart addtocart=new addtocart(context);
                 //Toast.makeText(context, addtocart.checkalready("1",cardmodelArrayList.get(position).getId()).toString(), Toast.LENGTH_SHORT).show();
-                if(addtocart.checkalready("1",model.getId())){
-                    addtocart.insertAddtocart("1",model.getId());
+                if(addtocart.checkalready(customerSession.customerid(),model.getId())){
+                    addtocart.insertAddtocart(customersession.customerid(),model.getId());
                     btnaddtocart.setText("Added ");
                 }else{
                     Toast.makeText(context, "Alread Add to the Cart", Toast.LENGTH_SHORT).show();

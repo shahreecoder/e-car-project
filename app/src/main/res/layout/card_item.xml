@@ -1,59 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:paddingStart="25dp"
     android:paddingEnd="25dp">
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/carditem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:cardCornerRadius="25dp"
-        android:id="@+id/carditem">
+        app:cardCornerRadius="25dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/bannerIV"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/oneslid"/>
+                android:src="@drawable/oneslid" />
+
             <TextView
                 android:id="@+id/titleTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:textColor="#FF5722"
                 android:fontFamily="@font/lato_bold"
+                android:padding="8dp"
                 android:text="The Title"
-                android:textSize="19sp"/>
+                android:textColor="#FF5722"
+                android:textSize="19sp" />
+
             <TextView
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginLeft="8dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/lato_bold"
-                android:layout_marginLeft="8dp"
-                android:layout_margin="10dp"
-                android:textSize="18sp"
-                android:text="Price"/>
+                android:text="Price"
+                android:textSize="18sp" />
+
             <Button
 
+                android:id="@+id/addtocarthomecard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btnbg"
+                android:backgroundTint="#FF5722"
+                android:fontFamily="@font/lato_bold"
                 android:padding="0dp"
                 android:text="Add to Cart"
-                android:id="@+id/addtocarthomecard"
-                android:backgroundTint="#FF5722"
-                android:textColor="@color/white"
-                android:fontFamily="@font/lato_bold"
-                />
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

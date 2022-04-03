@@ -72,4 +72,6 @@ public class mainhomecustomer extends AppCompatActivity {
         transaction.replace(R.id.frame,fragment);
         transaction.commit();
     }
+
+
 }

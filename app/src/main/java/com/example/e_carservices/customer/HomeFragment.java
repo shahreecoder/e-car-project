@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -51,6 +52,7 @@ public class HomeFragment extends Fragment {
     CardView CardService, CardCalculater;
     private ArrayList<cardmodel> cardmodelArrayList;
     private MycardAdapter mycardAdapter;
+    TextView homefaddress;
 
 
     public HomeFragment() {
@@ -74,7 +76,10 @@ public class HomeFragment extends Fragment {
         CardService=view.findViewById(R.id.cardservice);
         CardCalculater=view.findViewById(R.id.CardCalculater);
         recyclerView=view.findViewById(R.id.topdealRV);
+        homefaddress=view.findViewById(R.id.homefaddress);
 
+        CustomerSession customerSession=new CustomerSession(getContext());
+        homefaddress.setText( customerSession.getaddress());
 
 
 //        For Slider Set Adapter

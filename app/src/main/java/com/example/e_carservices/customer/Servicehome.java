@@ -40,6 +40,7 @@ public class Servicehome extends AppCompatActivity {
     //ArrayList for Storing image urls and titles
 
     private ArrayList<cardmodel> cardmodelArrayList;
+    TextView servicehomeaddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,39 +48,49 @@ public class Servicehome extends AppCompatActivity {
         setContentView(R.layout.activity_servicehome);
 
         gridView = (GridView) findViewById(R.id.gridView);
+        servicehomeaddress=findViewById(R.id.servicehomeaddress);
+        CustomerSession customerSession=new CustomerSession(getBaseContext());
+
+        servicehomeaddress.setText(customerSession.getaddress());
 
         cardmodelArrayList = new ArrayList<>();
 
 
-        Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.custome_exit_dialog);
+        if(customerSession.customerid()==null){
+            Dialog dialog = new Dialog(this);
+            dialog.setContentView(R.layout.custome_exit_dialog);
 
-        final Button btnyess = dialog.findViewById(R.id.btnyess);
-        final Button btnno = dialog.findViewById(R.id.btnno);
-        final TextView titletxt=dialog.findViewById(R.id.txtexit);
-        titletxt.setText("Please Login To Continue");
-        btnyess.setText("Login");
-        btnno.setText("Cancel");
+            final Button btnyess = dialog.findViewById(R.id.btnyess);
+            final Button btnno = dialog.findViewById(R.id.btnno);
+            final TextView titletxt=dialog.findViewById(R.id.txtexit);
+            titletxt.setText("Please Login To Continue");
+            btnyess.setText("Login");
+            btnno.setText("Cancel");
 
 
-        btnyess.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            btnyess.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
-                dialog.dismiss();
-                getData();
+                    dialog.dismiss();
+                    getData();
 
-            }
-        });
-        btnno.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                dialog.dismiss();
-            }
-        });
+                }
+            });
+            btnno.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                    dialog.dismiss();
+                }
+            });
 
-        dialog.show();
+            dialog.show();
+        }else{
+            getData();
+        }
+
+
 
 
     }

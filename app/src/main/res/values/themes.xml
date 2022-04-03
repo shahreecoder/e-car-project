@@ -21,5 +21,12 @@
     </style>
     <style name="Model" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bottom_sheet_background</item>
+
+
     </style>
+
+    <style name="Button.White" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@color/master</item>
+    </style>
+
 </resources>

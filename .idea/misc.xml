@@ -10,15 +10,23 @@
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/ic_bag.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/ic_bin.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/ic_cancel.xml" value="0.1" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/ic_dolar.xml" value="0.2075" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/ic_horn.xml" value="0.2075" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/ic_location.xml" value="0.1305" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/logouticon.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/masterbg.xml" value="0.1" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/masterbtn.xml" value="0.1305" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_addservices.xml" value="0.16417272338606242" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_checkout.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_customerlogin.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_customersignup.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_homescreen.xml" value="0.25" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_logindriver.xml" value="0.2" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_loginowner.xml" value="0.2" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_mainhomecustomer.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_manageservices.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_master_home.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_owneraddress.xml" value="0.22" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_ownerdashboard.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_ownerworkshop.xml" value="0.22" />

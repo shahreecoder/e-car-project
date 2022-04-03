@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +33,7 @@ public class MycardAdapter extends RecyclerView.Adapter<MycardAdapter.ViewHolder
     ArrayList<cardmodel> cardmodelArrayList;
     Context context;
     ViewGroup viewGroup;
+
     public MycardAdapter(ArrayList<cardmodel> cardmodelArrayList, Context context) {
         this.cardmodelArrayList = cardmodelArrayList;
         this.context = context;
@@ -40,9 +42,9 @@ public class MycardAdapter extends RecyclerView.Adapter<MycardAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       View view=LayoutInflater.from(parent.getContext())
-               .inflate(R.layout.card_item,parent,false);
-                viewGroup=parent;
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.card_item, parent, false);
+        viewGroup = parent;
 
         return new ViewHolder(view);
     }
@@ -50,10 +52,10 @@ public class MycardAdapter extends RecyclerView.Adapter<MycardAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-            Picasso.get().load("https://ecar.shahreecoder.com/api/uploads/" + cardmodelArrayList.get(position).getImage()).into(holder.imageView);
-            //holder.imageView.setImageResource(cardmodelArrayList.get(position).getImage());
-            holder.title.setText(cardmodelArrayList.get(position).getTitle());
-            holder.price.setText("Price: "+cardmodelArrayList.get(position).getPrice()+" /PKR");
+        Picasso.get().load("https://ecar.shahreecoder.com/api/uploads/" + cardmodelArrayList.get(position).getImage()).into(holder.imageView);
+        //holder.imageView.setImageResource(cardmodelArrayList.get(position).getImage());
+        holder.title.setText(cardmodelArrayList.get(position).getTitle());
+        holder.price.setText("Price: " + cardmodelArrayList.get(position).getPrice() + " /PKR");
 //            holder.btncart.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
@@ -61,11 +63,12 @@ public class MycardAdapter extends RecyclerView.Adapter<MycardAdapter.ViewHolder
 //                    addtocart.insertAddtocart("1",cardmodelArrayList.get(position).getId());
 //                }
 //            });
-        addtocart addtocart=new addtocart(context);
-        for(int i=0; i<cardmodelArrayList.size();i++){
-            if(!addtocart.checkalready("1",cardmodelArrayList.get(position).getId())){
+        addtocart addtocart = new addtocart(context);
+        CustomerSession customerSession = new CustomerSession(context);
+        for (int i = 0; i < cardmodelArrayList.size(); i++) {
+            if (!addtocart.checkalready(customerSession.customerid(), cardmodelArrayList.get(position).getId())) {
                 holder.btncart.setText("Already in Cart");
-            }else{
+            } else {
                 holder.btncart.setText("Add to Cart");
             }
         }
@@ -73,82 +76,91 @@ public class MycardAdapter extends RecyclerView.Adapter<MycardAdapter.ViewHolder
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
-                Dialog dialog = new Dialog(context);
-                dialog.setContentView(R.layout.custome_exit_dialog);
+                CustomerSession customerSession = new CustomerSession(context);
 
-                final Button btnyess = dialog.findViewById(R.id.btnyess);
-                final Button btnno = dialog.findViewById(R.id.btnno);
-                final TextView titletxt=dialog.findViewById(R.id.txtexit);
-                titletxt.setText("Please Login to Continue");
-                btnyess.setText("Login");
-                btnno.setText("Cancel");
-                btnyess.setBackgroundColor(R.color.master);
 
-                btnyess.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                    addtocart addtocart=new addtocart(context);
-                        //Toast.makeText(context, addtocart.checkalready("1",cardmodelArrayList.get(position).getId()).toString(), Toast.LENGTH_SHORT).show();
-                    if(addtocart.checkalready("1",cardmodelArrayList.get(position).getId())){
-                        addtocart.insertAddtocart("1",cardmodelArrayList.get(position).getId());
+                if (customerSession.customerid() != null) {
+                    addtocart addtocart = new addtocart(context);
+                    //Toast.makeText(context, addtocart.checkalready("1",cardmodelArrayList.get(position).getId()).toString(), Toast.LENGTH_SHORT).show();
+                    if (addtocart.checkalready(customerSession.customerid(), cardmodelArrayList.get(position).getId())) {
+                        addtocart.insertAddtocart(customerSession.customerid(), cardmodelArrayList.get(position).getId());
                         holder.btncart.setText("Added ");
-                    }else{
+                    } else {
                         Toast.makeText(context, "Alread Add to the Cart", Toast.LENGTH_SHORT).show();
                     }
+                }
+                else {
+                    Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.custome_exit_dialog);
+
+                    final Button btnyess = dialog.findViewById(R.id.btnyess);
+                    final Button btnno = dialog.findViewById(R.id.btnno);
+                    final TextView titletxt = dialog.findViewById(R.id.txtexit);
+                    titletxt.setText("Please Login to Continue");
+                    btnyess.setText("Login");
+                    btnno.setText("Cancel");
+                    btnyess.setBackgroundColor(R.color.master);
+
+                    btnyess.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                           Intent intent=new Intent(context,customerlogin.class);
+
+                           context.startActivity(intent);
 
 
 
-                        dialog.dismiss();
+                            dialog.dismiss();
 
-                    }
-                });
-                btnno.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
+                        }
+                    });
+                    btnno.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.show();
 //                if(checkexit()){
 //                    ownerSession.Logoutowner();
 //                    Intent login=new Intent(ownerdashboard.this, loginowner.class);
 //                    startActivity(login);
 //                    finish();
 //                }
+                }
 
 
             }
         });
 
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    loatbottomsheet(cardmodelArrayList.get(position).getTitle(),cardmodelArrayList.get(position).getPrice(),cardmodelArrayList.get(position).getImage(),cardmodelArrayList.get(position).getDisp(),cardmodelArrayList.get(position).getId());
+                loatbottomsheet(cardmodelArrayList.get(position).getTitle(), cardmodelArrayList.get(position).getPrice(), cardmodelArrayList.get(position).getImage(), cardmodelArrayList.get(position).getDisp(), cardmodelArrayList.get(position).getId());
 
 
-
-                }
-            });
+            }
+        });
 
     }
 
     private void loatbottomsheet(String name, String Price, String image, String Disp, String id) {
-        BottomSheetDialog bottomSheetDialog=new BottomSheetDialog(context,R.style.BottomSheetStyle);
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context, R.style.BottomSheetStyle);
 
-        View view=LayoutInflater.from(context).inflate(R.layout.bottom_sheet_dialog,viewGroup,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_dialog, viewGroup, false);
         ImageView img;
         TextView tvname;
         TextView tvdisp;
         TextView tvprice;
-        img=view.findViewById(R.id.productimaged);
-        tvname=view.findViewById(R.id.productnamed);
-        tvdisp=view.findViewById(R.id.productdispd);
-        tvprice=view.findViewById(R.id.productpriced);
+        img = view.findViewById(R.id.productimaged);
+        tvname = view.findViewById(R.id.productnamed);
+        tvdisp = view.findViewById(R.id.productdispd);
+        tvprice = view.findViewById(R.id.productpriced);
 
         tvname.setText(name);
-        tvprice.setText("Price is: "+Price+" /PKR");
+        tvprice.setText("Price is: " + Price + " /PKR");
 
         Picasso.get().load("https://ecar.shahreecoder.com/api/uploads/" + image).into(img);
         tvdisp.setText(Disp);
@@ -169,16 +181,16 @@ public class MycardAdapter extends RecyclerView.Adapter<MycardAdapter.ViewHolder
         TextView title;
         TextView price;
         Button btncart;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.bannerIV);
-            title=itemView.findViewById(R.id.titleTV);
-            price=itemView.findViewById(R.id.price);
-            btncart=itemView.findViewById(R.id.addtocarthomecard);
+            imageView = itemView.findViewById(R.id.bannerIV);
+            title = itemView.findViewById(R.id.titleTV);
+            price = itemView.findViewById(R.id.price);
+            btncart = itemView.findViewById(R.id.addtocarthomecard);
 
 
-          //  Toast.makeText(context, addtocart.checkalready("1",cardmodelArrayList.get(position).getId()).toString(), Toast.LENGTH_SHORT).show();
-
+            //  Toast.makeText(context, addtocart.checkalready("1",cardmodelArrayList.get(position).getId()).toString(), Toast.LENGTH_SHORT).show();
 
 
         }

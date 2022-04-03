@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.e_carservices.customer.customerlogin;
 import com.example.e_carservices.customer.mainhomecustomer;
 import com.example.e_carservices.owner.loginowner;
 import com.example.e_carservices.owner.singupowner;
@@ -29,7 +30,7 @@ public class homescreen extends AppCompatActivity {
         btncustmr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(homescreen.this, mainhomecustomer.class);
+                Intent i=new Intent(homescreen.this, customerlogin.class);
                 startActivity(i);
 
             }

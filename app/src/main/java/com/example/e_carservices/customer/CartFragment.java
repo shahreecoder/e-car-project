@@ -3,6 +3,7 @@ package com.example.e_carservices.customer;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -49,8 +50,10 @@ public class CartFragment extends Fragment {
 
     private TextView total;
     private ImageView emptycart;
+    private Button btnplaceorder;
     int p;
     int rm,temp;
+
     public CartFragment() {
         // Required empty public constructor
     }
@@ -70,44 +73,45 @@ public class CartFragment extends Fragment {
         topdeallv=view.findViewById(R.id.cartlist);
         total=view.findViewById(R.id.totalprice);
         emptycart=view.findViewById(R.id.emptycart);
+        btnplaceorder=view.findViewById(R.id.placeorder);
 
         dealmodelArrayList.clear();
+        try {
+            CustomerSession customerSession=new CustomerSession(getContext());
+            addtocart addtocart=new addtocart(getContext());
+            Cursor cursor=addtocart.getcartdata(customerSession.customerid());
+
+            if(cursor.moveToFirst()){
+                do{
+
+                    loaddeals(cursor.getString(2));
+
+                }while (cursor.moveToNext());
+            }
+
+            cursor.close();
 
 
-        addtocart addtocart=new addtocart(getContext());
-        Cursor cursor=addtocart.getcartdata("1");
+            topdeallv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @SuppressLint("ResourceAsColor")
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Dialog dialog = new Dialog(getContext());
+                    dialog.setContentView(R.layout.custome_exit_dialog);
 
-        if(cursor.moveToFirst()){
-            do{
-
-                loaddeals(cursor.getString(2));
-
-            }while (cursor.moveToNext());
-        }
-
-        cursor.close();
-
-
-        topdeallv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @SuppressLint("ResourceAsColor")
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Dialog dialog = new Dialog(getContext());
-                dialog.setContentView(R.layout.custome_exit_dialog);
-
-                final Button btnyess = dialog.findViewById(R.id.btnyess);
-                final Button btnno = dialog.findViewById(R.id.btnno);
-                final TextView titletxt=dialog.findViewById(R.id.txtexit);
-                titletxt.setText("Are you sure to Remove item?");
-                btnyess.setText("Yes");
-                btnno.setText("No");
+                    final Button btnyess = dialog.findViewById(R.id.btnyess);
+                    final Button btnno = dialog.findViewById(R.id.btnno);
+                    final TextView titletxt=dialog.findViewById(R.id.txtexit);
+                    titletxt.setText("Are you sure to Remove item?");
+                    btnyess.setText("Yes");
+                    btnno.setText("No");
 
 
-                btnyess.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+                    btnyess.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
 
-                        removeitem(position, dealmodelArrayList.get(position).getPrice(),dealmodelArrayList.get(position).getId());
+                            removeitem(position, dealmodelArrayList.get(position).getPrice(),dealmodelArrayList.get(position).getId());
 //                    if(addtocart.checkalready("1",cardmodelArrayList.get(position).getId())){
 //                        addtocart.insertAddtocart("1",cardmodelArrayList.get(position).getId());
 //                    }else{
@@ -116,55 +120,60 @@ public class CartFragment extends Fragment {
 
 
 
-                        dialog.dismiss();
+                            dialog.dismiss();
 
-                    }
-                });
-                btnno.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
-
-
-            }
-        });
-        emptycart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Dialog dialog = new Dialog(getContext());
-                dialog.setContentView(R.layout.custome_exit_dialog);
-
-                final Button btnyess = dialog.findViewById(R.id.btnyess);
-                final Button btnno = dialog.findViewById(R.id.btnno);
-                final TextView titletxt=dialog.findViewById(R.id.txtexit);
-                titletxt.setText("Are you sure to Empty Cart?");
-                btnyess.setText("Yes");
-                btnno.setText("No");
+                        }
+                    });
+                    btnno.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.show();
 
 
-                btnyess.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+                }
+            });
+            emptycart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Dialog dialog = new Dialog(getContext());
+                    dialog.setContentView(R.layout.custome_exit_dialog);
 
-                        dialog.dismiss();
-                        cartempty();
+                    final Button btnyess = dialog.findViewById(R.id.btnyess);
+                    final Button btnno = dialog.findViewById(R.id.btnno);
+                    final TextView titletxt=dialog.findViewById(R.id.txtexit);
+                    titletxt.setText("Are you sure to Empty Cart?");
+                    btnyess.setText("Yes");
+                    btnno.setText("No");
 
-                    }
-                });
-                btnno.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
 
-                dialog.show();
+                    btnyess.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
 
-            }
-        });
+                            dialog.dismiss();
+                            cartempty();
+
+                        }
+                    });
+                    btnno.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+
+                }
+            });
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
 
 //        loaddeals("37");
@@ -173,7 +182,14 @@ public class CartFragment extends Fragment {
 
       //  loaddeals("26");
 //        int sum=0;
-
+btnplaceorder.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent=new Intent(getContext(),checkout.class);
+        intent.putExtra("total",p);
+        getContext().startActivity(intent);
+    }
+});
 
 
 
@@ -306,8 +322,8 @@ public class CartFragment extends Fragment {
 
     private void removeitem(int position, String price, String productid) {
         addtocart addtocart=new addtocart(getContext());
-
-        addtocart.removeitem("1",productid);
+        CustomerSession customerSession=new CustomerSession(getContext());
+        addtocart.removeitem(customerSession.customerid(),productid);
         dealmodelArrayList.remove(position);
         cartAdapter.notifyDataSetChanged();
 
@@ -317,8 +333,9 @@ public class CartFragment extends Fragment {
 
     }
     private void cartempty() {
+        CustomerSession customerSession=new CustomerSession(getContext());
         addtocart addtocart=new addtocart(getContext());
-        if(addtocart.clearCart("1")){
+        if(addtocart.clearCart(customerSession.customerid())){
             dealmodelArrayList.clear();
             cartAdapter.notifyDataSetChanged();
             p=0;

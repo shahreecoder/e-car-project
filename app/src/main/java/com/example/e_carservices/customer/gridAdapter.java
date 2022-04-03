@@ -53,7 +53,8 @@ public class gridAdapter extends BaseAdapter {
         TextView price=view.findViewById(R.id.priceG);
         ImageButton addtocartbtn=view.findViewById(R.id.addtocartimg);
         addtocart addtocart=new addtocart(context);
-        if(!addtocart.checkalready("1",cardmodelArrayList.get(position).getId())){
+        CustomerSession customerSession=new CustomerSession(context);
+        if(!addtocart.checkalready(customerSession.customerid(),cardmodelArrayList.get(position).getId())){
 
             addtocartbtn.setImageResource(R.drawable.ic_okcircle);
         }
@@ -66,11 +67,12 @@ public class gridAdapter extends BaseAdapter {
             public void onClick(View v) {
 
 
+
                 addtocart addtocart=new addtocart(context);
 
                 //Toast.makeText(context, addtocart.checkalready("1",cardmodelArrayList.get(position).getId()).toString(), Toast.LENGTH_SHORT).show();
-                if(addtocart.checkalready("1",cardmodelArrayList.get(position).getId())){
-                    addtocart.insertAddtocart("1",cardmodelArrayList.get(position).getId());
+                if(addtocart.checkalready(customerSession.customerid(),cardmodelArrayList.get(position).getId())){
+                    addtocart.insertAddtocart(customerSession.customerid(),cardmodelArrayList.get(position).getId());
                     addtocartbtn.setImageResource(R.drawable.ic_okcircle);
                 }else{
                     Toast.makeText(context, "Alread Add to the Cart", Toast.LENGTH_SHORT).show();

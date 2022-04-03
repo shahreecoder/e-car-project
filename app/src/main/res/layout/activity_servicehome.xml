@@ -37,7 +37,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="10dp"
@@ -47,6 +47,7 @@
             android:paddingStart="10dp"
             android:text="Home Address Goes here   "
 
+            android:id="@+id/servicehomeaddress"
             android:textColor="#FF5722"
             android:textSize="13sp" />
 

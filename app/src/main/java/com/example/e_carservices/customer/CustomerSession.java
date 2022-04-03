@@ -28,6 +28,13 @@ public class CustomerSession {
         editor.commit();
     }
 
+    public void setaddress(String ad){
+        editor.putString("city",ad);
+        editor.commit();
+    }
+    public String getaddress(){
+        return owner.getString("city",null);
+    }
     public String customerid() {
         return owner.getString(KEY_USERID, null);
     }

@@ -66,36 +66,45 @@ public class DealsFragment extends Fragment {
         topdeallv=view.findViewById(R.id.topdeallist);
 
 
-        Dialog dialog = new Dialog(getContext());
-        dialog.setContentView(R.layout.custome_exit_dialog);
+        CustomerSession customerSession=new CustomerSession(getContext());
 
-        final Button btnyess = dialog.findViewById(R.id.btnyess);
-        final Button btnno = dialog.findViewById(R.id.btnno);
-        final TextView titletxt=dialog.findViewById(R.id.txtexit);
-        titletxt.setText("Please Login to Continue");
-        btnyess.setText("Login");
-        btnno.setText("Cancel");
-        btnyess.setBackgroundColor(R.color.master);
+        if(customerSession.customerid()==null){
+            Dialog dialog = new Dialog(getContext());
+            dialog.setContentView(R.layout.custome_exit_dialog);
 
-        btnyess.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            final Button btnyess = dialog.findViewById(R.id.btnyess);
+            final Button btnno = dialog.findViewById(R.id.btnno);
+            final TextView titletxt=dialog.findViewById(R.id.txtexit);
+            titletxt.setText("Please Login to Continue");
+            btnyess.setText("Login");
+            btnno.setText("Cancel");
+            btnyess.setBackgroundColor(R.color.master);
 
-                loaddeals();
+            btnyess.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent=new Intent(getContext(),customerlogin.class);
+
+                    startActivity(intent);
 
 
 
-                dialog.dismiss();
+                    dialog.dismiss();
 
-            }
-        });
-        btnno.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
+                }
+            });
+            btnno.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
+        }else{
+            loaddeals();
+        }
+
 
 
 
