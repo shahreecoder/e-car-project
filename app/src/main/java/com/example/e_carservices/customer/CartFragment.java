@@ -45,36 +45,31 @@ public class CartFragment extends Fragment {
 
     View view;
 
-    public  ArrayList<cardmodel> dealmodelArrayList=new ArrayList<>();
-    private  cartAdapter cartAdapter;
+    public ArrayList<cardmodel> dealmodelArrayList = new ArrayList<>();
+    private cartAdapter cartAdapter;
     private ListView topdeallv;
 
     private TextView total;
     private ImageView emptycart;
     private Button btnplaceorder;
     int p;
-    int rm,temp;
+    int rm, temp;
 
     public CartFragment() {
         // Required empty public constructor
     }
 
 
-
-
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view=inflater.inflate(R.layout.fragment_cart, container, false);
+        view = inflater.inflate(R.layout.fragment_cart, container, false);
 
-        topdeallv=view.findViewById(R.id.cartlist);
-        total=view.findViewById(R.id.totalprice);
-        emptycart=view.findViewById(R.id.emptycart);
-        btnplaceorder=view.findViewById(R.id.placeorder);
+        topdeallv = view.findViewById(R.id.cartlist);
+        total = view.findViewById(R.id.totalprice);
+        emptycart = view.findViewById(R.id.emptycart);
+        btnplaceorder = view.findViewById(R.id.placeorder);
 
         CustomerSession customerSession = new CustomerSession(getContext());
 
@@ -116,23 +111,18 @@ public class CartFragment extends Fragment {
         }
 
 
-
-
-
-
-
         dealmodelArrayList.clear();
         try {
 //            CustomerSession customerSession=new CustomerSession(getContext());
-            addtocart addtocart=new addtocart(getContext());
-            Cursor cursor=addtocart.getcartdata(customerSession.customerid());
+            addtocart addtocart = new addtocart(getContext());
+            Cursor cursor = addtocart.getcartdata(customerSession.customerid());
 
-            if(cursor.moveToFirst()){
-                do{
+            if (cursor.moveToFirst()) {
+                do {
 
                     loaddeals(cursor.getString(2));
 
-                }while (cursor.moveToNext());
+                } while (cursor.moveToNext());
             }
 
             cursor.close();
@@ -146,7 +136,7 @@ public class CartFragment extends Fragment {
 
                     final Button btnyess = dialog.findViewById(R.id.btnyess);
                     final Button btnno = dialog.findViewById(R.id.btnno);
-                    final TextView titletxt=dialog.findViewById(R.id.txtexit);
+                    final TextView titletxt = dialog.findViewById(R.id.txtexit);
                     titletxt.setText("Are you sure to Remove item?");
                     btnyess.setText("Yes");
                     btnno.setText("No");
@@ -156,13 +146,12 @@ public class CartFragment extends Fragment {
                         @Override
                         public void onClick(View view) {
 
-                            removeitem(position, dealmodelArrayList.get(position).getPrice(),dealmodelArrayList.get(position).getId());
+                            removeitem(position, dealmodelArrayList.get(position).getPrice(), dealmodelArrayList.get(position).getId());
 //                    if(addtocart.checkalready("1",cardmodelArrayList.get(position).getId())){
 //                        addtocart.insertAddtocart("1",cardmodelArrayList.get(position).getId());
 //                    }else{
 //                        Toast.makeText(context, "Alread Add to the Cart", Toast.LENGTH_SHORT).show();
 //                    }
-
 
 
                             dialog.dismiss();
@@ -188,7 +177,7 @@ public class CartFragment extends Fragment {
 
                     final Button btnyess = dialog.findViewById(R.id.btnyess);
                     final Button btnno = dialog.findViewById(R.id.btnno);
-                    final TextView titletxt=dialog.findViewById(R.id.txtexit);
+                    final TextView titletxt = dialog.findViewById(R.id.txtexit);
                     titletxt.setText("Are you sure to Empty Cart?");
                     btnyess.setText("Yes");
                     btnno.setText("No");
@@ -215,42 +204,35 @@ public class CartFragment extends Fragment {
                 }
             });
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
 
 
 //        loaddeals("37");
 //        loaddeals("40");
 //        loaddeals("41");
 
-      //  loaddeals("26");
+        //  loaddeals("26");
 //        int sum=0;
-btnplaceorder.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        if(dealmodelArrayList.size()>0){
-            Intent intent=new Intent(getContext(),checkout.class);
-            intent.putExtra("total",String.valueOf(p));
-            getContext().startActivity(intent);
-            getActivity().finish();
-        }else{
-            Toast.makeText(getContext(), "Cart is Empty", Toast.LENGTH_SHORT).show();
-        }
+        btnplaceorder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (dealmodelArrayList.size() > 0) {
+                    Intent intent = new Intent(getContext(), checkout.class);
+                    intent.putExtra("total", String.valueOf(p));
+                    getContext().startActivity(intent);
+                    getActivity().finish();
+                } else {
+                    Toast.makeText(getContext(), "Cart is Empty", Toast.LENGTH_SHORT).show();
+                }
 
-    }
-});
-
-
-
-
-
+            }
+        });
 
 
         return view;
     }
-
 
 
     private void loaddeals(String productid) {
@@ -262,7 +244,6 @@ btnplaceorder.setOnClickListener(new View.OnClickListener() {
 //        dealmodelArrayList.add(new cardmodel("d","3","ff","1","fff"));
 //        cartAdapter=new cartAdapter(getContext(),dealmodelArrayList);
 //        topdeallv.setAdapter(cartAdapter);
-
 
 
 //        cardmodelArrayList.add(new cardmodel(
@@ -305,7 +286,7 @@ btnplaceorder.setOnClickListener(new View.OnClickListener() {
 //                    serviceadaptor.notifyDataSetChanged();
                     for (int i = 0; i < jsonArray.length(); i++) {
 
-                        String sid=jsonArray.getJSONObject(i).getString("Sid");
+                        String sid = jsonArray.getJSONObject(i).getString("Sid");
                         String stitle = jsonArray.getJSONObject(i).getString("Sname");
                         String sprice = jsonArray.getJSONObject(i).getString("Sprice");
                         String sdisp = jsonArray.getJSONObject(i).getString("Sdisp");
@@ -314,7 +295,7 @@ btnplaceorder.setOnClickListener(new View.OnClickListener() {
                         //modelservice = new modelservice(String.valueOf(i + 1), sname, "j", "j", simg);
 
 //                        dealmodelArrayList.add(new cardmodel(stitle,sprice,simg,sid,sdisp));
-                        addcartitem(stitle,sprice,simg,sid,sdisp);
+                        addcartitem(stitle, sprice, simg, sid, sdisp);
 
 
                     }
@@ -322,9 +303,6 @@ btnplaceorder.setOnClickListener(new View.OnClickListener() {
 //                    cartAdapter=new cartAdapter(getContext(),dealmodelArrayList);
 //
 //                    topdeallv.setAdapter(cartAdapter);
-
-
-
 
 
                     // mycardAdapter.notifyDataSetChanged();
@@ -352,7 +330,7 @@ btnplaceorder.setOnClickListener(new View.OnClickListener() {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
 
-                params.put("proid",productid);
+                params.put("proid", productid);
                 return params;
 
             }
@@ -366,42 +344,42 @@ btnplaceorder.setOnClickListener(new View.OnClickListener() {
     private void addcartitem(String stitle, String sprice, String simg, String sid, String sdisp) {
         dealmodelArrayList.add(new cardmodel(stitle, sprice, simg, sid, sdisp));
         cartAdapter = new cartAdapter(getContext(), dealmodelArrayList);
-        senddata( sprice);
+        senddata(sprice);
         topdeallv.setAdapter(cartAdapter);
 
     }
 
     private void removeitem(int position, String price, String productid) {
-        addtocart addtocart=new addtocart(getContext());
-        CustomerSession customerSession=new CustomerSession(getContext());
-        addtocart.removeitem(customerSession.customerid(),productid);
+        addtocart addtocart = new addtocart(getContext());
+        CustomerSession customerSession = new CustomerSession(getContext());
+        addtocart.removeitem(customerSession.customerid(), productid);
         dealmodelArrayList.remove(position);
         cartAdapter.notifyDataSetChanged();
 
-        p=p-Integer.parseInt(price);
+        p = p - Integer.parseInt(price);
 
-        total.setText(String.valueOf(p)+" /RS");
+        total.setText(String.valueOf(p) + " /RS");
 
     }
+
     private void cartempty() {
-        CustomerSession customerSession=new CustomerSession(getContext());
-        addtocart addtocart=new addtocart(getContext());
-        if(addtocart.clearCart(customerSession.customerid())){
+        CustomerSession customerSession = new CustomerSession(getContext());
+        addtocart addtocart = new addtocart(getContext());
+        if (addtocart.clearCart(customerSession.customerid())) {
             btnplaceorder.setVisibility(View.GONE);
             dealmodelArrayList.clear();
             cartAdapter.notifyDataSetChanged();
-            p=0;
-            total.setText(String.valueOf(p)+" /RS");
+            p = 0;
+            total.setText(String.valueOf(p) + " /RS");
         }
-
 
 
     }
 
 
     private void senddata(String sprice) {
-        p=p+Integer.parseInt(sprice);
-        total.setText(String.valueOf(p)+" /RS");
+        p = p + Integer.parseInt(sprice);
+        total.setText(String.valueOf(p) + " /RS");
 
     }
 

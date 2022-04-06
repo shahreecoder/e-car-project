@@ -1,15 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customer.AccountFragment">
+    tools:context=".customer.AccountFragment"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-    <GridView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/gridpersonal"
-        />
+        android:orientation="horizontal"
+        android:background="@color/master">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Account"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:paddingStart="20dp"
+            android:fontFamily="@font/bungee"
 
-</FrameLayout>
+
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_person_24"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitEnd"
+            android:paddingEnd="20dp"
+            android:backgroundTint="@color/white"
+            android:id="@+id/emptycart"
+
+            />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello "
+            android:textColor="@color/master"
+            android:textSize="25sp"
+            android:paddingStart="20dp"
+            android:fontFamily="@font/baloo_paaji"
+
+
+            />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="Hello "
+            android:textColor="#FF5722"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_arrow_right_alt_24"
+            android:layout_gravity="center_vertical"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UserName "
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            android:paddingStart="20dp"
+            android:fontFamily="@font/baloo_paaji"
+            android:textAllCaps="true"
+            android:id="@+id/usernametext"
+
+            />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        >
+        <Button
+            android:id="@+id/viewpending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:textColor="@color/primary"
+            android:text="View Pending Orders"
+            android:textAlignment="textStart"
+            android:textStyle="bold"
+            android:drawableEnd="@drawable/ic_hourglass"
+           />
+        <Button
+            android:id="@+id/viewdone"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:textColor="@color/primary"
+            android:text="View Complete Orders"
+            android:textAlignment="textStart"
+            android:drawableEnd="@drawable/ic_ok_circle"/>
+        <Button
+            android:id="@+id/accountsetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:textColor="@color/primary"
+            android:text="Account Setting"
+            android:textStyle="bold"
+            android:textAlignment="textStart"
+            android:drawableEnd="@drawable/ic_settings"/>
+        <Button
+            android:id="@+id/logoutuser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:textColor="@color/master"
+            android:text="Logout"
+            android:textStyle="bold"
+            android:textAlignment="textEnd"
+            android:drawableEnd="@drawable/ic_exit"
+            />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
