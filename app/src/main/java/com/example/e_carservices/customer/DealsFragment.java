@@ -46,7 +46,7 @@ import java.util.Map;
 public class DealsFragment extends Fragment {
     View view;
     private ArrayList<cardmodel> dealmodelArrayList;
-    private  TopDealAdapter dealAdapter;
+    private TopDealAdapter dealAdapter;
     private ListView topdeallv;
 
 
@@ -55,26 +55,24 @@ public class DealsFragment extends Fragment {
     }
 
 
-
-
     @SuppressLint("ResourceAsColor")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        view= inflater.inflate(R.layout.fragment_deals, container, false);
-        topdeallv=view.findViewById(R.id.topdeallist);
+        view = inflater.inflate(R.layout.fragment_deals, container, false);
+        topdeallv = view.findViewById(R.id.topdeallist);
 
 
-        CustomerSession customerSession=new CustomerSession(getContext());
+        CustomerSession customerSession = new CustomerSession(getContext());
 
-        if(customerSession.customerid()==null){
+        if (customerSession.customerid() == null) {
             Dialog dialog = new Dialog(getContext());
             dialog.setContentView(R.layout.custome_exit_dialog);
 
             final Button btnyess = dialog.findViewById(R.id.btnyess);
             final Button btnno = dialog.findViewById(R.id.btnno);
-            final TextView titletxt=dialog.findViewById(R.id.txtexit);
+            final TextView titletxt = dialog.findViewById(R.id.txtexit);
             titletxt.setText("Please Login to Continue");
             btnyess.setText("Login");
             btnno.setText("Cancel");
@@ -84,10 +82,9 @@ public class DealsFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent=new Intent(getContext(),customerlogin.class);
+                    Intent intent = new Intent(getContext(), customerlogin.class);
 
                     startActivity(intent);
-
 
 
                     dialog.dismiss();
@@ -101,13 +98,9 @@ public class DealsFragment extends Fragment {
                 }
             });
             dialog.show();
-        }else{
+        } else {
             loaddeals();
         }
-
-
-
-
 
 
         return view;
@@ -115,10 +108,8 @@ public class DealsFragment extends Fragment {
     }
 
 
-
-
     private void loaddeals() {
-        dealmodelArrayList =new ArrayList<>();
+        dealmodelArrayList = new ArrayList<>();
 
 //        cardmodelArrayList.add(new cardmodel(
 //                "title 01",
@@ -160,7 +151,7 @@ public class DealsFragment extends Fragment {
 //                    serviceadaptor.notifyDataSetChanged();
                     for (int i = 0; i < jsonArray.length(); i++) {
 
-                        String sid=jsonArray.getJSONObject(i).getString("Sid");
+                        String sid = jsonArray.getJSONObject(i).getString("Sid");
                         String stitle = jsonArray.getJSONObject(i).getString("Sname");
                         String sprice = jsonArray.getJSONObject(i).getString("Sprice");
                         String sdisp = jsonArray.getJSONObject(i).getString("Sdisp");
@@ -168,10 +159,10 @@ public class DealsFragment extends Fragment {
 
                         //modelservice = new modelservice(String.valueOf(i + 1), sname, "j", "j", simg);
 
-                        dealmodelArrayList.add(new cardmodel(stitle,sprice,simg,sid,sdisp));
+                        dealmodelArrayList.add(new cardmodel(stitle, sprice, simg, sid, sdisp));
 
                     }
-                    dealAdapter= new TopDealAdapter(getActivity().getBaseContext(), dealmodelArrayList);
+                    dealAdapter = new TopDealAdapter(getActivity().getBaseContext(), dealmodelArrayList);
                     topdeallv.setAdapter(dealAdapter);
 
                     // mycardAdapter.notifyDataSetChanged();
@@ -199,7 +190,7 @@ public class DealsFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
 
-                params.put("ownerid","owner");
+                params.put("ownerid", "owner");
                 return params;
 
             }

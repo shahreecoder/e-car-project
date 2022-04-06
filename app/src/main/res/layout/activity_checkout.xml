@@ -55,21 +55,21 @@
                 android:id="@+id/google_map"
                 android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:paddingStart="30dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="30dp"
-                android:paddingBottom="10dp"
-                android:text="Home addres goes here House number 3 Ahmad main sreet lahore"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:id="@+id/mainaddress"
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:paddingStart="30dp"-->
+<!--                android:paddingTop="10dp"-->
+<!--                android:paddingEnd="30dp"-->
+<!--                android:paddingBottom="10dp"-->
+<!--                android:text="Home addres goes here House number 3 Ahmad main sreet lahore"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="18sp"-->
+<!--                android:id="@+id/mainaddress"-->
 
-                />
+<!--                />-->
 
             <TextView
                 android:layout_width="match_parent"
@@ -127,7 +127,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
-                    android:id="@+id/usernameloginowner"
+                    android:id="@+id/customerphone"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -165,6 +165,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Place order"
+            android:id="@+id/orderplace"
             />
 
     </LinearLayout>

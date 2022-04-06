@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
+import android.opengl.Visibility;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -44,7 +45,7 @@ public class CartFragment extends Fragment {
 
     View view;
 
-    public ArrayList<cardmodel> dealmodelArrayList=new ArrayList<>();
+    public  ArrayList<cardmodel> dealmodelArrayList=new ArrayList<>();
     private  cartAdapter cartAdapter;
     private ListView topdeallv;
 
@@ -75,9 +76,54 @@ public class CartFragment extends Fragment {
         emptycart=view.findViewById(R.id.emptycart);
         btnplaceorder=view.findViewById(R.id.placeorder);
 
+        CustomerSession customerSession = new CustomerSession(getContext());
+
+        if (customerSession.customerid() == null) {
+            Dialog dialog = new Dialog(getContext());
+            dialog.setContentView(R.layout.custome_exit_dialog);
+
+            final Button btnyess = dialog.findViewById(R.id.btnyess);
+            final Button btnno = dialog.findViewById(R.id.btnno);
+            final TextView titletxt = dialog.findViewById(R.id.txtexit);
+            titletxt.setText("Please Login to Continue");
+            btnyess.setText("Login");
+            btnno.setText("Cancel");
+
+
+            btnyess.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(getContext(), customerlogin.class);
+
+                    startActivity(intent);
+
+
+                    dialog.dismiss();
+
+                }
+            });
+            btnno.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getContext(), customerlogin.class);
+
+                    startActivity(intent);
+
+                }
+            });
+            dialog.show();
+        }
+
+
+
+
+
+
+
         dealmodelArrayList.clear();
         try {
-            CustomerSession customerSession=new CustomerSession(getContext());
+//            CustomerSession customerSession=new CustomerSession(getContext());
             addtocart addtocart=new addtocart(getContext());
             Cursor cursor=addtocart.getcartdata(customerSession.customerid());
 
@@ -90,7 +136,6 @@ public class CartFragment extends Fragment {
             }
 
             cursor.close();
-
 
             topdeallv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @SuppressLint("ResourceAsColor")
@@ -185,9 +230,15 @@ public class CartFragment extends Fragment {
 btnplaceorder.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Intent intent=new Intent(getContext(),checkout.class);
-        intent.putExtra("total",p);
-        getContext().startActivity(intent);
+        if(dealmodelArrayList.size()>0){
+            Intent intent=new Intent(getContext(),checkout.class);
+            intent.putExtra("total",String.valueOf(p));
+            getContext().startActivity(intent);
+            getActivity().finish();
+        }else{
+            Toast.makeText(getContext(), "Cart is Empty", Toast.LENGTH_SHORT).show();
+        }
+
     }
 });
 
@@ -336,11 +387,14 @@ btnplaceorder.setOnClickListener(new View.OnClickListener() {
         CustomerSession customerSession=new CustomerSession(getContext());
         addtocart addtocart=new addtocart(getContext());
         if(addtocart.clearCart(customerSession.customerid())){
+            btnplaceorder.setVisibility(View.GONE);
             dealmodelArrayList.clear();
             cartAdapter.notifyDataSetChanged();
             p=0;
             total.setText(String.valueOf(p)+" /RS");
         }
+
+
 
     }
 
@@ -348,6 +402,7 @@ btnplaceorder.setOnClickListener(new View.OnClickListener() {
     private void senddata(String sprice) {
         p=p+Integer.parseInt(sprice);
         total.setText(String.valueOf(p)+" /RS");
+
     }
 
 
