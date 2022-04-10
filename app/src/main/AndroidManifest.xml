@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECarServices">
         <activity
+            android:name=".customer.order_details"
+            android:exported="false" />
+        <activity
+            android:name=".customer.order"
+            android:exported="false" />
+        <activity
             android:name=".customer.orderview"
             android:exported="false" />
 

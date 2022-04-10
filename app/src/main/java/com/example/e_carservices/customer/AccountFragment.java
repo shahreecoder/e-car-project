@@ -90,6 +90,8 @@ public class AccountFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
 
+                    Intent intent=new Intent(getContext(),order.class);
+                    startActivity(intent);
                 }
             });
 
