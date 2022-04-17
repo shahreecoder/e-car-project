@@ -3,6 +3,7 @@ package com.example.e_carservices.customer;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,6 +34,7 @@ public class order extends AppCompatActivity {
     public PendingOrderAdapter pendingOrderAdapter;
     private ListView orderlist;
     private TextView head;
+    String status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +42,23 @@ public class order extends AppCompatActivity {
         setContentView(R.layout.activity_order);
         orderlist = findViewById(R.id.listorder);
         head = findViewById(R.id.topordertv);
+        Intent intent=getIntent();
+        status=intent.getStringExtra("order");
+        Toast.makeText(this, status, Toast.LENGTH_SHORT).show();
+        if(status.equals("pending")){
+            head.setText("Pending orders");
+
+        }else{
+            head.setText("Complete orders");
+        }
         PendingOrderLoad();
         orderlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(order.this, orderModelArrayList.get(position).getTotal_ammount(), Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getBaseContext(),order_details.class);
+                intent.putExtra("orderid",orderModelArrayList.get(position).getOrderid());
+                startActivity(intent);
+                Toast.makeText(order.this, orderModelArrayList.get(position).getOrderid(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -96,6 +110,13 @@ public class order extends AppCompatActivity {
 
 
                 params.put("cusid", customerSession.customerid());
+                if(status.equals("pending")){
+                    params.put("status","pending" );
+                }else{
+                    params.put("status","done" );
+                }
+
+
                 return params;
 
             }

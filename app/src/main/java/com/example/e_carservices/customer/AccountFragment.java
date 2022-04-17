@@ -91,6 +91,7 @@ public class AccountFragment extends Fragment {
                 public void onClick(View v) {
 
                     Intent intent=new Intent(getContext(),order.class);
+                    intent.putExtra("order","pending");
                     startActivity(intent);
                 }
             });
@@ -99,7 +100,9 @@ public class AccountFragment extends Fragment {
             vco.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent=new Intent(getContext(),order.class);
+                    intent.putExtra("order","complete");
+                    startActivity(intent);
                 }
             });
 
