@@ -33,6 +33,8 @@
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_order_details.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_owneraddress.xml" value="0.22" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_ownerdashboard.xml" value="0.1" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_ownerorder.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_ownerorderdetails.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_ownerworkshop.xml" value="0.22" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_product_details.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/activity_servicedetails.xml" value="0.13333333333333333" />
@@ -51,6 +53,7 @@
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/fragment_deals.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/fragment_home.xml" value="0.15" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/fragment_product_details.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/ownerorderlistitem.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/singledatagrid.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/sliderimageitem.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/xml/customeexitdialog.xml" value="0.2" />

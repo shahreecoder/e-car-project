@@ -23,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.e_carservices.R;
+import com.example.e_carservices.customer.order;
 import com.example.e_carservices.database.clsConnection;
 
 import org.json.JSONException;
@@ -32,7 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ownerdashboard extends AppCompatActivity {
-    CardView crdaddservices, cardaddress, cardshop, cardmanagerservice;
+    CardView crdaddservices, cardaddress, cardshop, cardmanagerservice, cardbookinghistory, cardbookingsuccess;
     TextView ownername;
     LinearLayout l1, l2, l3;
     Button btnlogout;
@@ -44,6 +45,9 @@ public class ownerdashboard extends AppCompatActivity {
         crdaddservices = findViewById(R.id.Cardaddservices);
         cardaddress = findViewById(R.id.Cardaddaddress);
         cardshop = findViewById(R.id.cardaddworkshop);
+        cardbookinghistory = findViewById(R.id.bookinghistory);
+        cardbookingsuccess = findViewById(R.id.successbooking);
+
         cardmanagerservice = findViewById(R.id.crdmanageservice);
         ownername = findViewById(R.id.userownername);
         btnlogout = findViewById(R.id.logout);
@@ -119,6 +123,25 @@ public class ownerdashboard extends AppCompatActivity {
 
             }
         });
+        cardbookinghistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getBaseContext(),ownerorder.class);
+                intent.putExtra("order","complete");
+                startActivity(intent);
+            }
+        });
+        cardbookingsuccess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent intent=new Intent(getBaseContext(), ownerorder.class);
+                intent.putExtra("order","pending");
+                startActivity(intent);
+            }
+        });
+
 
 
     }
