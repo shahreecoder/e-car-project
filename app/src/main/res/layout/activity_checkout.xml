@@ -162,9 +162,15 @@
         android:layout_marginTop="20dp"
         >
         <Button
+            android:textColor="@color/master"
+
+            android:background="#0000"
+            android:layout_marginBottom="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Place order"
+            android:textSize="20dp"
+            android:textStyle="bold"
             android:id="@+id/orderplace"
             />
 

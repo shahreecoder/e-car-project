@@ -93,6 +93,7 @@ public class ownerorder extends AppCompatActivity {
                     Intent intent = new Intent(getBaseContext(), ownerorderdetails.class);
                     intent.putExtra("orderid", orderModelArrayList.get(position).getOrderid());
                     startActivity(intent);
+
                 }
 
             }

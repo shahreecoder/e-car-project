@@ -130,7 +130,7 @@ public class checkout extends AppCompatActivity {
     private void placeorder() {
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Please Wait...");
-        progressDialog.setMessage("Service is adding");
+        progressDialog.setMessage("Order is placing.....");
         progressDialog.show();
         clsConnection con = new clsConnection();
         con.getConn();
@@ -154,6 +154,7 @@ public class checkout extends AppCompatActivity {
                     cursor.close();
                     addtocart a=new addtocart(getBaseContext());
                     a.clearCart(customerSession.customerid());
+                    Toast.makeText(checkout.this, "order successfully placed...", Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(checkout.this,mainhomecustomer.class);
                     startActivity(intent);
                     finish();
@@ -198,7 +199,7 @@ public class checkout extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
 
-                Toast.makeText(checkout.this, response, Toast.LENGTH_SHORT).show();
+
             }
         }, new Response.ErrorListener() {
             @Override

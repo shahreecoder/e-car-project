@@ -41,17 +41,18 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/orderid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_bold"
             android:paddingStart="24dp"
-            android:text="20 "
+            android:text=""
             android:textColor="@color/master"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:id="@+id/orderid"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,17 +70,18 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/customername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_bold"
             android:paddingStart="24dp"
-            android:text="Muhammad Shahroz"
+            android:text=""
             android:textColor="@color/master"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:id="@+id/customername"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,17 +99,18 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/customerphn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_bold"
             android:paddingStart="24dp"
-            android:text="03058382300"
+            android:text=""
             android:textColor="@color/master"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:id="@+id/customerphn"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -125,15 +128,15 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/customeraddrss"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_bold"
             android:paddingStart="24dp"
-            android:text="Lahore"
+            android:text=""
             android:textColor="@color/master"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:id="@+id/customeraddrss"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -158,10 +161,10 @@
     </LinearLayout>
 
     <ListView
+        android:id="@+id/orderdetailslist"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        tools:listitem="@layout/ownerorderlistitem"
-        android:id="@+id/orderdetailslist"/>
+        tools:listitem="@layout/ownerorderlistitem" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -185,13 +188,13 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_bold"
             android:paddingStart="24dp"
-            android:text="300pkr"
+            android:text=""
             android:textColor="@color/master"
             android:textSize="18sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -209,18 +212,19 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_bold"
             android:paddingStart="24dp"
-            android:text="Pending"
+            android:text=""
             android:textAllCaps="true"
             android:textColor="@color/master"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:id="@+id/status"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -230,16 +234,16 @@
 
         <Button
 
+            android:id="@+id/ownerorderback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#00000000"
-            android:text="Go Back"
-            android:textSize="20sp"
-            android:textColor="@color/master"
             android:fontFamily="@font/baloo_paaji"
-            android:textAlignment="textEnd"
             android:paddingEnd="40dp"
-            />
+            android:text="Go Back"
+            android:textAlignment="textEnd"
+            android:textColor="@color/master"
+            android:textSize="20sp" />
 
 
     </LinearLayout>

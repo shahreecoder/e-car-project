@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,22 +38,31 @@ public class ownerorderdetails extends AppCompatActivity {
     public ArrayList<orderdetailsmodel> orderModelArrayList = new ArrayList<>();
     public orderdetailsadapter orderdetailsadapter;
     private ListView orderdetailslist;
-    TextView orderid, total,status, cusname, cusphn, cusaddress;
+    TextView orderid, total, status, cusname, cusphn, cusaddress;
+    Button ownerorderback;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ownerorderdetails);
-        orderdetailslist=findViewById(R.id.orderdetailslist);
-        orderid=findViewById(R.id.orderid);
-        total=findViewById(R.id.total);
-        status=findViewById(R.id.status);
-        cusname=findViewById(R.id.customername);
-        cusphn=findViewById(R.id.customerphn);
-        cusaddress=findViewById(R.id.customeraddrss);
-
-
+        orderdetailslist = findViewById(R.id.orderdetailslist);
+        orderid = findViewById(R.id.orderid);
+        total = findViewById(R.id.total);
+        status = findViewById(R.id.status);
+        cusname = findViewById(R.id.customername);
+        cusphn = findViewById(R.id.customerphn);
+        cusaddress = findViewById(R.id.customeraddrss);
+        ownerorderback = findViewById(R.id.ownerorderback);
         orderdetailsload();
+
+        ownerorderback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
+
     private void orderdetailsload() {
         clsConnection con = new clsConnection();
         con.getConn();
@@ -63,11 +74,11 @@ public class ownerorderdetails extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
-                    total.setText(jsonObject.getString("total")+" /PKR");
+                    total.setText(jsonObject.getString("total") + " /PKR");
                     cusname.setText(jsonObject.getString("customername"));
                     cusphn.setText(jsonObject.getString("phn"));
                     cusaddress.setText(jsonObject.getString("address"));
-                    if(jsonObject.getString("status").equals("done")){
+                    if (jsonObject.getString("status").equals("done")) {
                         status.setText(jsonObject.getString("status"));
                         status.setTextColor(R.color.teal_700);
                     }
@@ -101,9 +112,9 @@ public class ownerorderdetails extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
 
-                Intent intent=getIntent();
+                Intent intent = getIntent();
                 orderid.setText(intent.getStringExtra("orderid"));
-                params.put("orderid",intent.getStringExtra("orderid"));
+                params.put("orderid", intent.getStringExtra("orderid"));
                 return params;
 
             }
@@ -112,9 +123,10 @@ public class ownerorderdetails extends AppCompatActivity {
         requestQueue.add(request);
 
     }
-    public void addorderitem(String sname, String sprice){
 
-        orderModelArrayList.add(new orderdetailsmodel(sprice,sname));
+    public void addorderitem(String sname, String sprice) {
+
+        orderModelArrayList.add(new orderdetailsmodel(sprice, sname));
         orderdetailsadapter = new orderdetailsadapter(getBaseContext(), orderModelArrayList);
         orderdetailslist.setAdapter(orderdetailsadapter);
 

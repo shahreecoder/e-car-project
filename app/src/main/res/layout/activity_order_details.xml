@@ -41,6 +41,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/orderid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_bold"
@@ -48,8 +49,7 @@
             android:text="20 "
             android:textColor="@color/master"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:id="@+id/orderid"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -74,10 +74,10 @@
     </LinearLayout>
 
     <ListView
+        android:id="@+id/orderdetailslist"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        tools:listitem="@layout/cartlistitem"
-        android:id="@+id/orderdetailslist"/>
+        tools:listitem="@layout/cartlistitem" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -104,10 +104,10 @@
             android:text="300pkr"
             android:textColor="@color/master"
             android:textSize="20sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -125,6 +125,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_bold"
@@ -133,10 +134,10 @@
             android:textAllCaps="true"
             android:textColor="@color/master"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:id="@+id/status"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -146,16 +147,16 @@
 
         <Button
 
+            android:id="@+id/customerorderback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#00000000"
-            android:text="Go Back"
-            android:textSize="20sp"
-            android:textColor="@color/master"
             android:fontFamily="@font/baloo_paaji"
-            android:textAlignment="textEnd"
             android:paddingEnd="40dp"
-            />
+            android:text="Go Back"
+            android:textAlignment="textEnd"
+            android:textColor="@color/master"
+            android:textSize="20sp" />
 
 
     </LinearLayout>

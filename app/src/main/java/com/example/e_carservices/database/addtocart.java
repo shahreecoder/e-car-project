@@ -23,67 +23,84 @@ public class addtocart extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists tblcart");
     }
-    public Boolean insertAddtocart(String customerid, String productid){
-        SQLiteDatabase db= this.getWritableDatabase();
-        ContentValues contentValue=new ContentValues();
 
-        contentValue.put("customer_id",customerid);
-        contentValue.put("product_id",productid);
+    public Boolean insertAddtocart(String customerid, String productid) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValue = new ContentValues();
 
-        long result=db.insert("tblcart",null,contentValue);
-        if(result==-1){
+        contentValue.put("customer_id", customerid);
+        contentValue.put("product_id", productid);
+
+        long result = db.insert("tblcart", null, contentValue);
+        if (result == -1) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
-    public Cursor getcartdata(String customer_id){
+
+    public Cursor getcartdata(String customer_id) {
 
 
-        SQLiteDatabase db= this.getReadableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor=db.rawQuery("select * from tblcart where customer_id=?", new String []{customer_id});
+        Cursor cursor = db.rawQuery("select * from tblcart where customer_id=?", new String[]{customer_id});
         return cursor;
 
     }
 
-    public Boolean clearCart(String customer_id){
-        SQLiteDatabase db= this.getWritableDatabase();
-        long result=db.delete("tblcart","customer_id=?",new String[]{customer_id});
-        if(result==-1){
+    public String getcountitem(String customer_id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        int s = 0;
+
+        Cursor cursor = db.rawQuery("select * from tblcart where customer_id=?", new String[]{customer_id});
+        if (cursor.moveToFirst()) {
+            do {
+
+                s++;
+
+            } while (cursor.moveToNext());
+        }
+        return Integer.toString(s);
+
+    }
+
+    public Boolean clearCart(String customer_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete("tblcart", "customer_id=?", new String[]{customer_id});
+        if (result == -1) {
             return false;
-        }else{
+        } else {
             return true;
         }
     }
-    public Boolean removeitem(String customerid, String product_id){
-        SQLiteDatabase db= this.getWritableDatabase();
-        db.delete("tblcart","product_id=? and customer_id=?",new String[]{product_id,customerid});
+
+    public Boolean removeitem(String customerid, String product_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("tblcart", "product_id=? and customer_id=?", new String[]{product_id, customerid});
         return true;
     }
-    public Boolean checkalready(String customer_id, String product_id){
-        SQLiteDatabase db= this.getReadableDatabase();
 
-        Cursor cursor=db.rawQuery("select count(*) from tblcart where product_id='"+product_id+"' and customer_id='"+customer_id+"'",null);
+    public Boolean checkalready(String customer_id, String product_id) {
+        SQLiteDatabase db = this.getReadableDatabase();
 
-        int check=0;
-        String temp="";
-        if(cursor.moveToFirst()){
-            do{
+        Cursor cursor = db.rawQuery("select count(*) from tblcart where product_id='" + product_id + "' and customer_id='" + customer_id + "'", null);
 
-               temp= cursor.getString(0);
+        int check = 0;
+        String temp = "";
+        if (cursor.moveToFirst()) {
+            do {
 
-
-
+                temp = cursor.getString(0);
 
 
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         cursor.close();
 
-        if(Integer.parseInt(temp)>0){
+        if (Integer.parseInt(temp) > 0) {
             return false;
-        }else{
+        } else {
             return true;
         }
 

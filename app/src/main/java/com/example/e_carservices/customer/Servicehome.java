@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +39,7 @@ public class Servicehome extends AppCompatActivity {
 
     private GridView gridView;
 
+    ImageView cartload,servicehomeback;
     //ArrayList for Storing image urls and titles
 
     private ArrayList<cardmodel> cardmodelArrayList;
@@ -48,21 +51,24 @@ public class Servicehome extends AppCompatActivity {
         setContentView(R.layout.activity_servicehome);
 
         gridView = (GridView) findViewById(R.id.gridView);
-        servicehomeaddress=findViewById(R.id.servicehomeaddress);
-        CustomerSession customerSession=new CustomerSession(getBaseContext());
+        cartload = (ImageView) findViewById(R.id.cartload);
+        servicehomeback = (ImageView) findViewById(R.id.servicehomeback);
+
+        servicehomeaddress = findViewById(R.id.servicehomeaddress);
+        CustomerSession customerSession = new CustomerSession(getBaseContext());
 
         servicehomeaddress.setText(customerSession.getaddress());
 
         cardmodelArrayList = new ArrayList<>();
 
 
-        if(customerSession.customerid()==null){
+        if (customerSession.customerid() == null) {
             Dialog dialog = new Dialog(this);
             dialog.setContentView(R.layout.custome_exit_dialog);
 
             final Button btnyess = dialog.findViewById(R.id.btnyess);
             final Button btnno = dialog.findViewById(R.id.btnno);
-            final TextView titletxt=dialog.findViewById(R.id.txtexit);
+            final TextView titletxt = dialog.findViewById(R.id.txtexit);
             titletxt.setText("Please Login To Continue");
             btnyess.setText("Login");
             btnno.setText("Cancel");
@@ -86,18 +92,33 @@ public class Servicehome extends AppCompatActivity {
             });
 
             dialog.show();
-        }else{
+        } else {
             getData();
         }
 
+        cartload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent load=new Intent(getBaseContext(),mainhomecustomer.class);
+                load.putExtra("viewload","cart");
+                startActivity(load);
+                finish();
 
+            }
+        });
+        servicehomeback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent load=new Intent(getBaseContext(),mainhomecustomer.class);
 
+                startActivity(load);
+                finish();
+            }
+        });
 
     }
 
     private void getData() {
-
-
 
 
         ProgressDialog progressDialog = new ProgressDialog(this);
@@ -120,7 +141,7 @@ public class Servicehome extends AppCompatActivity {
 
                     for (int i = 0; i < jsonArray.length(); i++) {
 
-                        String sid=jsonArray.getJSONObject(i).getString("Sid");
+                        String sid = jsonArray.getJSONObject(i).getString("Sid");
                         String stitle = jsonArray.getJSONObject(i).getString("Sname");
                         String sprice = jsonArray.getJSONObject(i).getString("Sprice");
                         String sdisp = jsonArray.getJSONObject(i).getString("Sdisp");
@@ -128,10 +149,10 @@ public class Servicehome extends AppCompatActivity {
 
                         //modelservice = new modelservice(String.valueOf(i + 1), sname, "j", "j", simg);
 
-                        cardmodelArrayList.add(new cardmodel(stitle,sprice,simg,sid,sdisp));
+                        cardmodelArrayList.add(new cardmodel(stitle, sprice, simg, sid, sdisp));
 
                     }
-                    gridAdapter gridViewAdapter = new gridAdapter(getBaseContext(),cardmodelArrayList);
+                    gridAdapter gridViewAdapter = new gridAdapter(getBaseContext(), cardmodelArrayList);
 
                     //Adding adapter to gridview
                     gridView.setAdapter(gridViewAdapter);
@@ -161,7 +182,7 @@ public class Servicehome extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
 
-                params.put("ownerid","owner");
+                params.put("ownerid", "owner");
                 return params;
 
             }

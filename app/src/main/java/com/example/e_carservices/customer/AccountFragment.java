@@ -24,7 +24,7 @@ public class AccountFragment extends Fragment {
 
     View view;
 
-    Button vpo, vco, as, logout;
+    Button vpo, vco,  logout;
     TextView tvusername;
 
     // CustomerSession customerSession=new CustomerSession(getContext());
@@ -42,7 +42,7 @@ public class AccountFragment extends Fragment {
 
         vpo = view.findViewById(R.id.viewpending);
         vco = view.findViewById(R.id.viewdone);
-        as = view.findViewById(R.id.accountsetting);
+       // as = view.findViewById(R.id.accountsetting);
         logout = view.findViewById(R.id.logoutuser);
         tvusername = view.findViewById(R.id.usernametext);
 
@@ -106,13 +106,7 @@ public class AccountFragment extends Fragment {
                 }
             });
 
-            //Account setting
-            as.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                }
-            });
 
             //logout user
             logout.setOnClickListener(new View.OnClickListener() {
