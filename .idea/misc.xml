@@ -14,6 +14,7 @@
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/ic_dolar.xml" value="0.2075" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/ic_horn.xml" value="0.2075" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/ic_hourglass.xml" value="0.1305" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/ic_location.xml" value="0.1305" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/logouticon.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/drawable/masterbg.xml" value="0.1" />
@@ -56,6 +57,7 @@
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/ownerorderlistitem.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/singledatagrid.xml" value="0.1" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/layout/sliderimageitem.xml" value="0.1" />
+        <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1305" />
         <entry key="..\:/Users/Hp/ECarServices/app/src/main/res/xml/customeexitdialog.xml" value="0.2" />
       </map>
     </option>

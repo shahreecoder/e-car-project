@@ -123,7 +123,13 @@ public class addservices extends AppCompatActivity {
                         Toast.makeText(addservices.this, "Please Provide Require information", Toast.LENGTH_LONG).show();
                     } else {
                         //Toast.makeText(addservices.this,Sname.getText().toString()+ Sdisp.getText().toString()+Sprice.getText().toString()+ ownerSession.owenid(), Toast.LENGTH_LONG).show();
-                        insertservice(Sname.getText().toString(), Sdisp.getText().toString(), Sprice.getText().toString(), encodedimage, ownerSession.owenid());
+                        int price=Integer.parseInt(Sprice.getText().toString()) ;
+                        if(price>0){
+                            insertservice(Sname.getText().toString(), Sdisp.getText().toString(), Sprice.getText().toString(), encodedimage, ownerSession.owenid());
+                        }else{
+                            Toast.makeText(addservices.this, "Please input Price", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 }
             });
